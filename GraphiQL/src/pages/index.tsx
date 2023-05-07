@@ -4,10 +4,10 @@ import { Route, Routes } from 'react-router-dom';
 const WelcomePage = lazy(() => import('./welcome'));
 // import Auth from './authorization/Auth';
 //const Auth = lazy(() => import('./authorization/Auth'));
-import AuthForm from '../shared/ui/AuthForm';
-import Register from '../shared/ui/Register';
-import Reset from '../shared/ui/Reset';
-import Dashboard from '../shared/ui/Dashboard';
+import AuthForm from '../entities/AuthForm';
+import Register from '../entities/Register';
+import Reset from '../entities/Reset';
+import Dashboard from '../entities/Dashboard';
 
 export default function Routing() {
   return (

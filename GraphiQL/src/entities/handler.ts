@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// import { useEffect, useState } from 'react';
+// import { Link, useNavigate } from 'react-router-dom';
 // import { auth, signInWithEmailAndPassword, signInWithGoogle } from './firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import AuthForm from '../shared/ui/AuthForm';
+// import { useAuthState } from 'react-firebase-hooks/auth';
+// import AuthForm from '../shared/ui/AuthForm';
 // логика авторизации AuthForm
 // обработка нажатия на кнопки
 // добавить обработку

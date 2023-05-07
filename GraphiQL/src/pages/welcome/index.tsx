@@ -1,7 +1,7 @@
 //import { useEffect, useState } from 'react';
 // import { lazy } from 'react';
 import { Link } from 'react-router-dom';
-import { auth, logout } from '../../shared/ui/firebase';
+import { auth, logout } from '../../entities/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Welcome() {

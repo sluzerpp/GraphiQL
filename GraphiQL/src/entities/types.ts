@@ -3,7 +3,7 @@
 
 // export interface
 // auth: Auth;
-
+// добавить нормально типы данных сюда
 export interface defaultValues {
   name: '';
   picture: '';
