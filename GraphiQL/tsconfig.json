@@ -5,6 +5,10 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "baseUrl": "./src",
+    "types": ["vite/client"],
+    "paths": {
+      "@/*": ["*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -21,6 +25,6 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true
   },
-  "include": ["src", "types/app.d.ts"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
