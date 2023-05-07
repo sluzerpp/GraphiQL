@@ -7,6 +7,7 @@ const WelcomePage = lazy(() => import('./welcome'));
 import AuthForm from '../shared/ui/AuthForm';
 import Register from '../shared/ui/Register';
 import Reset from '../shared/ui/Reset';
+import Dashboard from '../shared/ui/Dashboard';
 
 export default function Routing() {
   return (
@@ -15,6 +16,7 @@ export default function Routing() {
       <Route path="/auth" element={<AuthForm />} />
       <Route path="/register" element={<Register />} />
       <Route path="/reset" element={<Reset />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 }

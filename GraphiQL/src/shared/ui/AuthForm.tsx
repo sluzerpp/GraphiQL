@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-// import { lazy } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, signInWithEmailAndPassword, signInWithGoogle } from './firebase';
-//import './firebase.d.ts';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import './AuthForm.css';
 
@@ -12,6 +10,7 @@ export default function AuthForm() {
   const [user, loading, error] = useAuthState(auth);
   // const [setError] = useState('');
   const navigate = useNavigate();
+
   useEffect(() => {
     if (loading) {
       // maybe trigger a loading screen
@@ -19,10 +18,8 @@ export default function AuthForm() {
     }
   }, [user, loading, navigate]);
   if (error) {
-    console.log(error);
+    console.error(error);
   }
-
-  // логика
 
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
@@ -30,7 +27,7 @@ export default function AuthForm() {
         alert('Signed-in E-mail -> Welcome!');
         navigate('/');
       })
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error));
   };
 
   const handleSignInWithGoogle = () => {
@@ -39,7 +36,7 @@ export default function AuthForm() {
         alert('Signed-in Google -> Welcome!');
         navigate('/');
       })
-      .catch((error) => console.log(error)); // Handle sign-in error
+      .catch((error) => alert(error)); // Handle sign-in error
   };
 
   return (

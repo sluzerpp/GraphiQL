@@ -9,7 +9,9 @@ function Register() {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [user, loading, error] = useAuthState(auth);
+
   const navigate = useNavigate();
+
   const register = () => {
     if (!name) alert('Please enter name');
     registerWithEmailAndPassword(name, email, password);
@@ -17,7 +19,7 @@ function Register() {
   };
   useEffect(() => {
     if (loading) return;
-    //if (user) navigate('/dashboard');
+    if (user) navigate('/dashboard');
     //navigate('/path')
   }, [user, loading, navigate]);
   if (error) {

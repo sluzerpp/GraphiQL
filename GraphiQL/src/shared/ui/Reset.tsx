@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { auth, sendPasswordResetEmail } from './firebase';
 import './Reset.css';
-// import reCAPTCHA from 'react-google-recaptcha';
 
 function Reset() {
   const [email, setEmail] = useState('');
@@ -13,7 +12,7 @@ function Reset() {
   const navigate = useNavigate();
   useEffect(() => {
     if (loading) return;
-    // if (user) navigate('/dashboard');
+    if (user) navigate('/dashboard');
   }, [user, loading, navigate]);
   if (error) {
     console.log(error);
@@ -25,7 +24,7 @@ function Reset() {
         alert('Check your inbox -> You will be redirected!');
         navigate('/');
       })
-      .catch((error) => console.log(error)); // Handle sign-in error
+      .catch((error) => alert(error)); // Handle sign-in error
   };
 
   return (

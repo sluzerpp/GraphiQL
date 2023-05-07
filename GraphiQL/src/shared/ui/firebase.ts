@@ -14,25 +14,13 @@ import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
+import { firebaseConfig } from './firebase-const';
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: 'AIzaSyDT2wUeZ9wQwDZU6QRgcXMQtJdxDGXFU7M',
-  authDomain: 'fir-auth-graphiql.firebaseapp.com',
-  projectId: 'fir-auth-graphiql',
-  storageBucket: 'fir-auth-graphiql.appspot.com',
-  messagingSenderId: '363423330476',
-  appId: '1:363423330476:web:017f4d0fb8d849f359ef09',
-  measurementId: 'G-YFMMKC7WH9',
-};
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+console.log(auth);
 const db = getFirestore(app);
-// const analytics = getAnalytics(app);
-// init functions
 const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = async () => {
   try {
@@ -50,20 +38,18 @@ const signInWithGoogle = async () => {
     }
   } catch (err) {
     console.error(err);
-    alert(err.message);
   }
 };
 
-const logInWithEmailAndPassword = async (email, password) => {
+const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
     console.error(err);
-    alert(err.message);
   }
 };
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+const registerWithEmailAndPassword = async (name: string, email: string, password: string) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -75,18 +61,15 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     });
   } catch (err) {
     console.error(err);
-    alert(err.message);
   }
 };
 
-const sendPasswordReset = async (email) => {
+const sendPasswordReset = async (email: string) => {
   try {
-    console.log('sendPasswordReset пришли сюда');
     await sendPasswordResetEmail(auth, email);
     alert('Password reset link sent!');
   } catch (err) {
     console.error(err);
-    alert(err.message);
   }
 };
 

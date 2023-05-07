@@ -13,6 +13,8 @@ export default function Welcome() {
       Welcome Page
       <br></br>
       <Link to="/auth">Login</Link>
+      <br></br>
+      <Link to="/dashboard">Dashboard</Link>
       <div>User- {authUser}</div>
       <button className="login__btn" onClick={logout}>
         Logout

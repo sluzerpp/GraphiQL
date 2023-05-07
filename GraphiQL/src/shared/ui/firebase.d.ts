@@ -1,4 +1,4 @@
-declare module './firebase' {
+/* declare module './firebase' {
   export const auth: Auth;
   export function signInWithEmailAndPassword(
     auth: Auth,
@@ -25,3 +25,4 @@ declare module './firebase' {
   export function logout(): Promise<UserCredential>;
 }
 export {};
+*/
