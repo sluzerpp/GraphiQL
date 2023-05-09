@@ -1,0 +1,20 @@
+.wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
+	background-color: #171e26;
+	position: relative;
+
+
+	&:before{
+		background: url('../assets/img/graph-wash.png') repeat;
+    content: "";
+    display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+    left: 0;
+	}
+}

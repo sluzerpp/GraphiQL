@@ -1,0 +1,32 @@
+.footer{
+	position: relative;
+	z-index: 3;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 80px;
+	margin-top: 20px;
+
+	&__git{
+		display: flex;
+	}
+
+	&__gititem{
+		width: 40px;
+		height: 40px;
+		color: white;
+		margin-right: 10px;
+	}
+
+	&__year{
+		font-size: 30px;
+		color: white;
+	}
+
+	&__rslogo{
+		width: 80px;
+		height: 80px;
+		
+	}
+}
