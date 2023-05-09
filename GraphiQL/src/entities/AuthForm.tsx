@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, signInWithEmailAndPassword, signInWithGoogle } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+// import { AuthContext } from './Auth';
 import './AuthForm.css';
+// import firebase from 'firebase/compat/app';
 
 export default function AuthForm() {
   const [email, setEmail] = useState('');
@@ -16,10 +18,20 @@ export default function AuthForm() {
       // maybe trigger a loading screen
       return;
     }
+    // выведем токен
+    console.log(auth.currentUser?.getIdToken());
+    // onIdTokenChanged
+    console.log('onIdTokenChanged', auth.currentUser?.getIdToken(/*forceRefresh=*/ true));
   }, [user, loading, navigate]);
   if (error) {
     console.error(error);
   }
+  /* берем из контекста
+  const { currentUser } = useContext(AuthContext);
+  console.log('Context currentUser>>', currentUser);
+  if (currentUser) {
+    return navigate('/');
+  }*/
 
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)

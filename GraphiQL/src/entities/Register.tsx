@@ -8,20 +8,28 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [user, loading, error] = useAuthState(auth);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [user] = useAuthState(auth);
 
   const navigate = useNavigate();
 
   const register = () => {
     if (!name) alert('Please enter name');
-    registerWithEmailAndPassword(name, email, password);
-    alert('registerWithEmailAndPassword-> Success!');
+    try {
+      setError('');
+      setLoading(true);
+      registerWithEmailAndPassword(name, email, password);
+    } catch {
+      setError('Failed to Register');
+    }
+    setLoading(false);
+    // alert('registerWithEmailAndPassword-> Success!');
   };
   useEffect(() => {
-    if (loading) return;
     if (user) navigate('/dashboard');
     //navigate('/path')
-  }, [user, loading, navigate]);
+  }, [user, navigate]);
   if (error) {
     console.log(error);
   }
@@ -49,7 +57,7 @@ function Register() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <button className="register__btn" onClick={register}>
+        <button disabled={loading} className="register__btn" onClick={register}>
           Register
         </button>
         <button className="register__btn register__google" onClick={signInWithGoogle}>

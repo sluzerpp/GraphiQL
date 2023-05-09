@@ -1,12 +1,18 @@
-//import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 // import { lazy } from 'react';
-import { Link } from 'react-router-dom';
-import { auth, logout } from '../../entities/firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../../entities/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Welcome() {
+  const navigate = useNavigate();
+
   const [user] = useAuthState(auth);
-  const authUser = user?.email;
+  useEffect(() => {
+    if (!user) {
+      navigate('/auth');
+    }
+  }, [navigate, user]);
 
   return (
     <div>
@@ -15,10 +21,7 @@ export default function Welcome() {
       <Link to="/auth">Login</Link>
       <br></br>
       <Link to="/dashboard">Dashboard</Link>
-      <div>User- {authUser}</div>
-      <button className="login__btn" onClick={logout}>
-        Logout
-      </button>
+      <div>Welcome {user?.email}</div>
     </div>
   );
 }
