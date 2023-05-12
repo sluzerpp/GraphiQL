@@ -5,10 +5,7 @@ import { GraphQLResponse } from '../types';
 
 type RequestParams = {
   query: string;
-  operationName?: string;
-  headers?: {
-    [key: string]: string;
-  };
+  headers?: object;
   vars?: object;
 };
 
