@@ -24,11 +24,10 @@ function Register() {
       setError('Failed to Register');
     }
     setLoading(false);
-    // alert('registerWithEmailAndPassword-> Success!');
+    alert('registerWithEmailAndPassword-> Success!');
   };
   useEffect(() => {
     if (user) navigate('/dashboard');
-    //navigate('/path')
   }, [user, navigate]);
   if (error) {
     console.log(error);

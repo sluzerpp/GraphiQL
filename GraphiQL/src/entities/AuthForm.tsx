@@ -1,15 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, signInWithEmailAndPassword, signInWithGoogle } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-// import { AuthContext } from './Auth';
+import { AuthContext } from './Auth';
 import './AuthForm.css';
+// import { limitToLast } from 'firebase/firestore';
 // import firebase from 'firebase/compat/app';
+/*interface IAuthUser {
+  id: string | undefined;
+  email: string | null | undefined;
+  token: string | undefined;
+} */
 
 export default function AuthForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, loading, error] = useAuthState(auth);
+  // const [authUser, setAuthUser] = useState<IAuthUser | null>(null);
   // const [setError] = useState('');
   const navigate = useNavigate();
 
@@ -19,27 +26,43 @@ export default function AuthForm() {
       return;
     }
     // выведем токен
-    console.log(auth.currentUser?.getIdToken());
+    // console.log(auth.currentUser?.getIdToken());
     // onIdTokenChanged
-    console.log('onIdTokenChanged', auth.currentUser?.getIdToken(/*forceRefresh=*/ true));
+    // console.log('onIdTokenChanged', auth.currentUser?.getIdToken(/*forceRefresh=*/ true));
   }, [user, loading, navigate]);
   if (error) {
     console.error(error);
   }
-  /* берем из контекста
+
   const { currentUser } = useContext(AuthContext);
-  console.log('Context currentUser>>', currentUser);
+  console.log('Context currentUser token >>', currentUser?.refreshToken);
+  // берем из контекста AuthContext
+  // если мы вошли то идем на главную -> navigate('/');
   if (currentUser) {
-    return navigate('/');
-  }*/
+    console.log('currentUser - там лежит>>>', currentUser);
+    navigate('/');
+  }
 
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
+        /*const authUser: IAuthUser = {
+          id: user?.uid,
+          email: user?.email,
+          token: user?.refreshToken,
+        }; 
+        if (currentUser) {
+          console.log('currentUser - там лежит>>>', currentUser);
+          navigate('/');
+        }
+        */
+        // setAuthUser(authUser);
+        // console.log('Auth User - там лежит', authUser);
         alert('Signed-in E-mail -> Welcome!');
-        navigate('/');
       })
-      .catch((error) => alert(error));
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   const handleSignInWithGoogle = () => {

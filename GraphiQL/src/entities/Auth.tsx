@@ -1,10 +1,10 @@
 import React, { useEffect, useState, ReactNode } from 'react';
 import { auth } from './firebase';
-// import { useAuthState } from 'react-firebase-hooks/auth';
 import { User } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 export interface AuthContextType {
-  currentUser: User | null;
+  currentUser: User | null | undefined;
 }
 
 export interface Props {
@@ -21,18 +21,25 @@ export const AuthProvider = ({ children }: Props) => {
   const [currentUser, setCurrentUser] = useState<UserOrNull>(null);
   const [pending, setPending] = useState(true);
   type UserOrNull = User | null;
+  const navigate = useNavigate();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
+      // при изменении состояния пользователя идем на главную
       if (user !== null) {
         setCurrentUser(auth.currentUser);
         setPending(false);
+      } else {
+        navigate('/auth');
+        setCurrentUser(null);
+        setPending(true);
       }
     });
-  }, []);
+  }, [navigate]);
 
-  /* if (pending) {
-    return 'Loading...';
-  }*/
+  if (pending) {
+    console.log('Loading...');
+    // return 'Loading...';
+  }
 
   return (
     <AuthContext.Provider

@@ -7,6 +7,7 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from 'firebase/auth';
+
 import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
 //import firebase from 'firebase/app';
 import { firebaseConfig } from './firebase-const';
@@ -17,11 +18,10 @@ import { initializeApp } from 'firebase/app';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-console.log(auth);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+
 const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);

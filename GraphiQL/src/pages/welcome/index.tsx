@@ -3,16 +3,28 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../entities/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 
 export default function Welcome() {
   const navigate = useNavigate();
-
   const [user] = useAuthState(auth);
   useEffect(() => {
-    if (!user) {
-      navigate('/auth');
-    }
-  }, [navigate, user]);
+    // токен авторизации
+    //const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      // const uid = user.uid;
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        console.log('We have User Now', uid);
+      } else {
+        // User is signed out
+        navigate('/auth');
+        alert('We DO NOT have User Now');
+      }
+    });
+  }, [navigate]);
 
   return (
     <div>
