@@ -21,7 +21,6 @@ export default function Welcome() {
       } else {
         // User is signed out
         navigate('/auth');
-        alert('We DO NOT have User Now');
       }
     });
   }, [navigate]);

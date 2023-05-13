@@ -4,10 +4,11 @@
 // export interface
 // auth: Auth;
 // добавить нормально типы данных сюда
-export interface defaultValues {
-  name: '';
-  picture: '';
-  dateOfBirth: '';
+//export interface
+export interface UserValues {
+  name: string;
+  email: string;
+  password: string;
   gender: '';
   agreeToTerms: false;
   favoriteColor: '';

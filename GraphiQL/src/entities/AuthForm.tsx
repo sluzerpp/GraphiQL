@@ -25,10 +25,6 @@ export default function AuthForm() {
       // maybe trigger a loading screen
       return;
     }
-    // выведем токен
-    // console.log(auth.currentUser?.getIdToken());
-    // onIdTokenChanged
-    // console.log('onIdTokenChanged', auth.currentUser?.getIdToken(/*forceRefresh=*/ true));
   }, [user, loading, navigate]);
   if (error) {
     console.error(error);
@@ -58,10 +54,11 @@ export default function AuthForm() {
         */
         // setAuthUser(authUser);
         // console.log('Auth User - там лежит', authUser);
+        navigate('/');
         alert('Signed-in E-mail -> Welcome!');
       })
       .catch((error) => {
-        console.log(error.message);
+        alert(error.message);
       });
   };
 

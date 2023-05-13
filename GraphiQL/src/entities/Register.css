@@ -31,3 +31,10 @@
   .register div {
     margin-top: 7px;
   }
+
+  .register__error {
+    max-height: inherit;
+    max-width: inherit;
+    font-family: inherit;
+    color: #f36b4d;
+  }
