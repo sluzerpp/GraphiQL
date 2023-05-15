@@ -1,8 +1,9 @@
-type Props = {
-  onClick: () => void;
-  text: string;
-};
+import classes from './style.module.scss';
 
-export function Button({ onClick, text }: Props) {
-  return <button onClick={onClick}>{text}</button>;
+interface ButtonProps {
+  children: string;
+}
+
+export default function Button({ children }: ButtonProps) {
+  return <button className={classes.button}>{children}</button>;
 }

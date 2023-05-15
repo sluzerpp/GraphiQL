@@ -24,12 +24,12 @@ export const AuthProvider = ({ children }: Props) => {
   const navigate = useNavigate();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      // при изменении состояния пользователя идем на главную
+      // при 🔴🔴🔴 изменении состояния пользователя идем на главную
       if (user !== null) {
         // setCurrentUser(auth.currentUser);
         // setPending(false);
         // нужно чтобы разлогинивался
-        // исправить здесь
+        // 🔴🔴🔴 исправить здесь
         navigate('/auth');
         setCurrentUser(null);
         setPending(true);
