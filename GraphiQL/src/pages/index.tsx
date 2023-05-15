@@ -4,13 +4,13 @@ const WelcomePage = lazy(() => import('./welcome'));
 // import WelcomePage from '../pages/welcome/index';
 // import Auth from './authorization/Auth';
 //const Auth = lazy(() => import('./authorization/Auth'));
-import AuthForm from '../entities/AuthForm';
-import Register from '../entities/Register';
-import Reset from '../entities/Reset';
-import Dashboard from '../entities/Dashboard';
-import PrivateRoute from '../entities/PrivateRoute';
-import { AuthContext } from '../entities/Auth';
-import { auth } from '../entities/firebase';
+import AuthForm from '../features/Login/AuthForm';
+import Register from '../features/Register/Register';
+import Reset from '../features/Reset/Reset';
+import Dashboard from '../features/Dashboard/Dashboard';
+import PrivateRoute from '../features/Dashboard/PrivateRoute';
+import { AuthContext } from '../features/authentication/ValidateAccessToken/Auth';
+import { auth } from '../features/authentication/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Routing() {

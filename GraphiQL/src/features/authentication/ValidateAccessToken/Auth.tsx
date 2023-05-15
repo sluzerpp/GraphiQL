@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ReactNode } from 'react';
-import { auth } from './firebase';
+import { auth } from '../firebase';
 import { User } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,8 +26,13 @@ export const AuthProvider = ({ children }: Props) => {
     auth.onAuthStateChanged((user) => {
       // при изменении состояния пользователя идем на главную
       if (user !== null) {
-        setCurrentUser(auth.currentUser);
-        setPending(false);
+        // setCurrentUser(auth.currentUser);
+        // setPending(false);
+        // нужно чтобы разлогинивался
+        // исправить здесь
+        navigate('/auth');
+        setCurrentUser(null);
+        setPending(true);
       } else {
         navigate('/auth');
         setCurrentUser(null);

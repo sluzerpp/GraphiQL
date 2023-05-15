@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 // import { lazy } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../../entities/firebase';
+import { auth } from '../../features/authentication/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { onAuthStateChanged } from 'firebase/auth';
 

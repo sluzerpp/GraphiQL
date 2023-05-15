@@ -1,6 +1,6 @@
 // import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/fetchBaseQuery';
 // import { UseFormRegister, FieldErrors } from 'react-hook-form';
-
+import React from 'react';
 // export interface
 // auth: Auth;
 // добавить нормально типы данных сюда

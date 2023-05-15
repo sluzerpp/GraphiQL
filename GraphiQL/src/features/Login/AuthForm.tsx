@@ -1,9 +1,11 @@
 import { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, signInWithEmailAndPassword, signInWithGoogle } from './firebase';
+import { auth, signInWithEmailAndPassword, signInWithGoogle } from '../authentication/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { AuthContext } from './Auth';
+import { AuthContext } from '../authentication/ValidateAccessToken/Auth';
 import './AuthForm.css';
+// import { useForm } from 'react-hook-form';
+// добавить сюда валидацию полей формы
 // import { limitToLast } from 'firebase/firestore';
 // import firebase from 'firebase/compat/app';
 /*interface IAuthUser {
