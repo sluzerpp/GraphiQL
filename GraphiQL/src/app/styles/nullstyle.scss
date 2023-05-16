@@ -22,4 +22,6 @@ li{list-style-type: none;}
 
 .page-content{
 	padding-top: 80px;
+	position: relative;
+	z-index: 2;
 }
