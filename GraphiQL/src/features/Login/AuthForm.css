@@ -11,6 +11,7 @@
     text-align: center;
     background-color: #dcdcdc;
     padding: 30px;
+    position: relative;
   }
   .login__textBox {
     padding: 10px;

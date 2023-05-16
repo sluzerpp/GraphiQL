@@ -29,10 +29,9 @@ export const AuthProvider = ({ children }: Props) => {
         // setCurrentUser(auth.currentUser);
         // setPending(false);
         // нужно чтобы разлогинивался
-        // 🔴🔴🔴 исправить здесь
         navigate('/auth');
-        setCurrentUser(null);
-        setPending(true);
+        setCurrentUser(auth.currentUser);
+        setPending(false);
       } else {
         navigate('/auth');
         setCurrentUser(null);

@@ -3,12 +3,15 @@ import classes from './style.module.scss';
 import icon from 'assets/svg/logo.svg';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18n';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useHandler } from 'features/authentication/handler';
 
 export default function Header({}) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [activeLang, setActiveLang] = useState(i18n.language);
-
+  const handleInClick = useHandler();
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
     setActiveLang(lang);
@@ -53,8 +56,12 @@ export default function Header({}) {
       </div>
 
       <nav className={classes.nav}>
-        <Button>{t('header.buttons.in')}</Button>
-        <Button>{t('header.buttons.up')}</Button>
+        <Button type="submit" onClick={handleInClick}>
+          {t('header.buttons.in')}
+        </Button>
+        <Button type="submit" onClick={() => navigate('/register')}>
+          {t('header.buttons.up')}
+        </Button>
       </nav>
     </header>
   );

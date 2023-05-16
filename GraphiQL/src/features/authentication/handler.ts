@@ -1,22 +1,31 @@
-// import { useEffect, useState } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { auth, signInWithEmailAndPassword, signInWithGoogle } from './firebase';
+//import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, signInWithEmailAndPassword, signInWithGoogle } from './firebase';
 // import { useAuthState } from 'react-firebase-hooks/auth';
-// import AuthForm from '../shared/ui/AuthForm';
-// логика авторизации AuthForm
-// обработка нажатия на кнопки
-// добавить обработку
-/*const handleSignIn = () => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      alert('Signed-in E-mail -> Welcome!');
-      const navigate = useNavigate();
-      navigate('/');
-    })
-    .catch((error) => alert(error));
+//import AuthForm from '../Login/AuthForm';
+
+import { useCallback } from 'react';
+
+export const useHandler = () => {
+  const navigate = useNavigate();
+  const handleClick = useCallback(() => {
+    console.log(`Clicked button!`);
+    signInWithEmailAndPassword(auth, 'ilya.mikhaylyukov@gmail.com', '$k42kg12uu')
+      .then(() => {
+        alert('Signed-in E-mail -> Welcome!');
+        navigate('/');
+      })
+      .catch((error) => alert(error));
+  }, [navigate]);
+
+  return handleClick;
 };
 
-const handleSignInWithGoogle = () => {
+// логика авторизации AuthForm
+// обработка нажатия на кнопки
+// добавить обработку - вынести сюда функции
+// сделать нормальный модуль по человечески
+export const handleSignInWithGoogle = () => {
   signInWithGoogle()
     .then(() => {
       alert('Signed-in Google -> Welcome!');
@@ -25,4 +34,3 @@ const handleSignInWithGoogle = () => {
     })
     .catch((error) => alert(error)); // Handle sign-in error
 };
-*/
