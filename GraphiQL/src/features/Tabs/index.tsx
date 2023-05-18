@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import './index.scss';
 
 interface TabItem {
@@ -10,7 +10,7 @@ interface TabsProps {
   items: TabItem[];
 }
 
-export default function Tabs({ items }: TabsProps) {
+function Tabs({ items }: TabsProps) {
   const [currentItem, setCurrentItem] = useState<TabItem>(items[0]);
 
   const createTabClickHander = (item: TabItem) => () => {
@@ -33,3 +33,5 @@ export default function Tabs({ items }: TabsProps) {
     </div>
   );
 }
+
+export default memo(Tabs);

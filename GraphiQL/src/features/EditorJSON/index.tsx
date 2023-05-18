@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import CodeMirrorEditor, { EditorProps } from '../../shared/ui/Editor';
 import { json } from '@codemirror/lang-json';
 
-export default function EditorJSON(props: EditorProps) {
+function EditorJSON(props: EditorProps) {
   const ext = [json().extension];
 
   if (props.extensions) {
@@ -13,3 +14,5 @@ export default function EditorJSON(props: EditorProps) {
     extensions: ext,
   });
 }
+
+export default memo(EditorJSON);
