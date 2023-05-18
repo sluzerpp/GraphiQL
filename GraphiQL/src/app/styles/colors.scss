@@ -7,9 +7,14 @@
     --primary-colorPressed: #eff32c;
   
     /* Global colors */
-    --color-white: #fff;
+    --color-white: rgba(255, 255, 255, 0.8);
     --color-dark: #212a2e;
-    --color-blue-iris: #543fd7;;
+    --color-blue-iris: #543fd7;
+
+		--color-blue: #4285f4;
+		--color-black: #171e26;
+		--color-pink: #e535ab;
+		--color-red: #f36b4d;
   }
   
   html[data-theme="light"] {

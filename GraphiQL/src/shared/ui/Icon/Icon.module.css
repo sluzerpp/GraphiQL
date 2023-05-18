@@ -9,7 +9,7 @@
   
     &_clickable:hover,
     &_clickable:active {
-      background-color: #0001;
+      background-color: var(--color-black);
       border-radius: 8px;
     }
   }

@@ -1,0 +1,23 @@
+.register {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .register__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: var(--color-white);
+    padding: 30px;
+    position: relative;
+  }
+
+  .register div {
+    margin-top: 7px;
+  }
+
+  .register__error {
+    
+  }

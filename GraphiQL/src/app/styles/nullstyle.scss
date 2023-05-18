@@ -24,4 +24,13 @@ li{list-style-type: none;}
 	padding-top: 80px;
 	position: relative;
 	z-index: 2;
+	height: 100%;
+	flex-grow: 1;
+}
+
+.error{
+	padding-left: 1rem;
+    max-width: 15rem;
+    font-family: inherit;
+    color: var(--color-red);
 }

@@ -7,11 +7,25 @@ interface ButtonProps {
   children: ReactNode;
   isLoading?: boolean;
   type?: 'submit';
+  style?: 'default' | 'blue' | 'black';
+  disabled?: boolean;
 }
 
-export default function Button({ onClick, children, isLoading, type }: ButtonProps) {
+export default function Button({
+  onClick,
+  children,
+  isLoading,
+  type,
+  style = 'default',
+  disabled = false,
+}: ButtonProps) {
   return (
-    <button type={type} className={classes.button} onClick={onClick}>
+    <button
+      type={type}
+      disabled={disabled}
+      className={`${classes.button} ${classes[`button_${style}`]}`}
+      onClick={onClick}
+    >
       {isLoading ? <Icon className={classes.loader} type="loader" /> : children}
     </button>
   );

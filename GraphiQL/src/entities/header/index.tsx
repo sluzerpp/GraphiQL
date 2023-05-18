@@ -1,4 +1,4 @@
-import Button from 'shared/ui/Button/Button';
+import Button from '@/shared/ui/Button';
 import classes from './style.module.scss';
 import icon from 'assets/svg/logo.svg';
 import { useTranslation } from 'react-i18next';

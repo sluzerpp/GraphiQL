@@ -4,8 +4,7 @@ const WelcomePage = lazy(() => import('./welcome'));
 // import WelcomePage from '../pages/welcome/index';
 // import Auth from './authorization/Auth';
 //const Auth = lazy(() => import('./authorization/Auth'));
-import AuthForm from '../features/Login/AuthForm';
-import Register from '../features/Register/Register';
+import Register from '../features/Register';
 import Reset from '../features/Reset/Reset';
 import Dashboard from '../features/Dashboard/Dashboard';
 // import PrivateRoute from '../features/Dashboard/PrivateRoute';
@@ -15,6 +14,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import classes from './style.module.scss';
 import Footer from 'entities/footer';
 import Header from 'entities/header';
+import SignPage from './sign';
+import AuthForm from '@/features/Login';
 
 export default function Routing() {
   const [user] = useAuthState(auth);
@@ -28,8 +29,22 @@ export default function Routing() {
       <AuthContext.Provider value={{ currentUser: user }}>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
-          <Route path="/auth" element={<AuthForm />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/auth"
+            element={
+              <SignPage>
+                <AuthForm />
+              </SignPage>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <SignPage>
+                <Register />
+              </SignPage>
+            }
+          />
           <Route path="/reset" element={<Reset />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>

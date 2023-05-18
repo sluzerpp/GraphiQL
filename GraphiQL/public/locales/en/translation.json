@@ -40,5 +40,24 @@
 				}
 			]
 		}
+},
+"forms": {
+	"common": {
+		"email": "E-mail Address",
+		"password": "Password"
+	},
+	"auth": {
+		"button": "Login",
+		"buttonGoogle": "Login with Google",
+		"reset": "Forgot Password",
+		"notes": {
+			"note1": "Dont have an account?",
+			"link": "Register",
+			"note2": "now."
+		}
+	},
+	"register": {
+
+	}
 }
 }

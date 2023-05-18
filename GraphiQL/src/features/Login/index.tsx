@@ -3,7 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth, signInWithEmailAndPassword, signInWithGoogle } from '../authentication/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { AuthContext } from '../authentication/ValidateAccessToken/Auth';
-import './AuthForm.css';
+import classes from './style.module.scss';
+import Button from '@/shared/ui/Button';
+import { useTranslation } from 'react-i18next';
 // import { useForm } from 'react-hook-form';
 // добавить сюда валидацию полей формы
 // import { limitToLast } from 'firebase/firestore';
@@ -15,6 +17,7 @@ import './AuthForm.css';
 } */
 
 export default function AuthForm() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, loading, error] = useAuthState(auth);
@@ -74,33 +77,34 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="login">
-      <div className="login__container">
+    <div className={classes.login}>
+      <div className={classes.login__container}>
         <input
           type="text"
-          className="login__textBox"
+          className={classes.login__textBox}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
+          placeholder={t('forms.common.email') || ''}
         />
         <input
           type="password"
-          className="login__textBox"
+          className={classes.login__textBox}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder={t('forms.common.password') || ''}
         />
-        <button className="login__btn" onClick={handleSignIn}>
-          Login
-        </button>
-        <button className="login__btn login__google" onClick={handleSignInWithGoogle}>
-          Login with Google
-        </button>
+        <Button style="black" onClick={handleSignIn}>
+          {t('forms.auth.button')}
+        </Button>
+        <Button style="blue" onClick={handleSignInWithGoogle}>
+          {t('forms.auth.buttonGoogle')}
+        </Button>
         <div>
-          <Link to="/reset">Forgot Password</Link>
+          <Link to="/reset">{t('forms.auth.reset')}</Link>
         </div>
         <div>
-          Dont have an account? <Link to="/register">Register</Link> now.
+          {t('forms.auth.notes.note1')} <Link to="/register">{t('forms.auth.notes.link')}</Link>
+          {t('forms.auth.notes.note2')}
         </div>
       </div>
     </div>

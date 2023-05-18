@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { registerWithEmailAndPassword, signInWithGoogle } from '../authentication/firebase';
 import { useForm } from 'react-hook-form';
-import './Register.css';
+import classes from './style.module.scss';
+import Button from '@/shared/ui/Button';
+import { Input } from '@/shared/ui/Input/Input';
 
 type RegisterFormData = {
   name: string;
@@ -69,39 +71,30 @@ function Register() {
   };
 
   return (
-    <div className="register">
-      <div className="register__container">
+    <div className={classes.register}>
+      <div className={classes.register__container}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input
+          <Input type="text" placeholder="Full Name" register={register('name')} />
+          <div className="error">{errors.name && <div>{errors.name.message}</div>}</div>
+          <Input
             type="text"
-            className="register__textBox"
-            {...register('name')}
-            placeholder="Full Name"
-          />
-          <div className="register__error">{errors.name && <div>{errors.name.message}</div>}</div>
-          <input
-            type="text"
-            className="register__textBox"
-            {...register('email', { required: true })}
             placeholder="E-mail Address"
+            register={register('email', { required: true })}
           />
-          <div className="register__error">{errors.email && <div>{errors.email.message}</div>}</div>
-          <input
+          <div className="error">{errors.email && <div>{errors.email.message}</div>}</div>
+          <Input
             type="password"
-            className="register__textBox"
-            {...register('password', { required: true })}
             placeholder="Password"
+            register={register('password', { required: true })}
           />
-          <div className="register__error">
-            {errors.password && <div>{errors.password.message}</div>}
-          </div>
-          <div className="register__error">{error && <div>{error}</div>}</div>
-          <button disabled={loading} className="register__btn" type="submit">
+          <div className="error">{errors.password && <div>{errors.password.message}</div>}</div>
+          <div className="error">{error && <div>{error}</div>}</div>
+          <Button style="black" disabled={loading} type="submit">
             Register
-          </button>
-          <button className="register__btn register__google" onClick={signInWithGoogle}>
+          </Button>
+          <Button style="blue" onClick={signInWithGoogle}>
             Register with Google
-          </button>
+          </Button>
         </form>
         <div>
           Already have an account? <Link to="/auth">Login</Link> now.
