@@ -30,6 +30,7 @@ export default function Routing() {
       <AuthContext.Provider value={{ currentUser: user }}>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
+          <Route path="/main" element={<MainPage />} />
           <Route
             path="/auth"
             element={

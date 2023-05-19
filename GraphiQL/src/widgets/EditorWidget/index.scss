@@ -4,8 +4,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  background-color: #596172;
   position: relative;
+
+  *, *::before, *::after {
+    transition: none !important;
+  }
 
   .column {
     display: flex;
