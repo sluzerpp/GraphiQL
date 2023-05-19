@@ -4,6 +4,7 @@ import useHistory from './useHistory';
 import GraphQLObject from './GraphQLObject';
 import PrevButton from './PrevButton';
 import './index.scss';
+import Spinner from '@/shared/ui/Spinner';
 
 interface DocsProps {
   schema?: GraphQLSchema;
@@ -52,7 +53,9 @@ function GraphQLDocs({ schema, isLoading, isOpen }: DocsProps) {
         ) : (
           <h2>Схема отсутствует</h2>
         )
-      ) : null}
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 }

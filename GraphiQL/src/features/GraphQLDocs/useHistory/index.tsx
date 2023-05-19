@@ -7,10 +7,6 @@ export default function useHistory() {
   const [currentObject, setCurrentObject] = useState<GraphQLUnknownObject | null>(null);
   const [prevObject, setPrevObject] = useState<GraphQLUnknownObject | null>(null);
 
-  // console.log('prev - ', prevObject);
-  // console.log('history - ', history);
-  // console.log('current - ', currentObject);
-
   const setHistoryObject = (object: GraphQLUnknownObject): void => {
     if (history.length > 0) {
       setPrevObject(history[history.length - 1]);

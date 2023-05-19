@@ -19,7 +19,7 @@ export default function MainPage() {
           </div>
           <SubmitButton onClick={() => getSchema(true)}></SubmitButton>
         </ControlSideBar>
-        <GraphQLDocs isOpen={isOpen} schema={schema}></GraphQLDocs>
+        <GraphQLDocs isLoading={isLoading} isOpen={isOpen} schema={schema}></GraphQLDocs>
       </div>
       <EditorWidget schema={schema} isLoading={isLoading}></EditorWidget>
     </div>
