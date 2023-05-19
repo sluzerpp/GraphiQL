@@ -1,0 +1,38 @@
+.docs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #282c34;
+  width: 350px;
+  max-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  &.open {
+    padding: 20px;
+    max-width: 100vw;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__prev {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    text-align-last: left;
+    padding: 5px 0;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

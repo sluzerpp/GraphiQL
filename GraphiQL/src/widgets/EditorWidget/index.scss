@@ -1,0 +1,40 @@
+.editor-widget {
+  height: 100%;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  position: relative;
+
+  *, *::before, *::after {
+    transition: none !important;
+  }
+
+  .column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+    border-radius: 10px;
+    gap: 10px;
+  }
+}
+
+.editor-wrapper {
+  overflow-y: auto; /* добавляем вертикальный скролл */
+  display: flex;
+  background-color: #282c34;
+  height: 100%;
+  flex: 3 1 0%;
+}
+
+.editor {
+  height: 100%;
+}
+
+.editor-controls {
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+}
