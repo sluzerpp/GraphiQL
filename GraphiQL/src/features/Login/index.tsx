@@ -75,9 +75,10 @@ export default function AuthForm() {
   };
 
   const handleSignInWithGoogle = () => {
+    setTimeout(() => toast.success('Welcome- You have logged-in!'), 3000);
+    // поправить этот позор - разобраться почему не всплывает нормально
     signInWithGoogle()
       .then(() => {
-        toast.success('Welcome- You have logged-in!');
         navigate('/');
       })
       .catch((error) => {
