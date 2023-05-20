@@ -1,5 +1,6 @@
-import { z } from 'zod';
+// import { z } from 'zod';
 
+/* ВОЗМОЖНО ПОНАДОБИТСЯ
 const envVariables = z.object({
   VITE_API_ENDPOINT: z.string().url(),
   VITE_API_DELAY: z.string().regex(/^\d+$/, { message: 'Must be a positive number' }).optional(),
@@ -10,7 +11,7 @@ const envVariables = z.object({
 
 envVariables.parse(import.meta.env);
 
-/* declare global {
+ declare global {
   type ImportMetaEnv = z.infer<typeof envVariables>;
 } */
 

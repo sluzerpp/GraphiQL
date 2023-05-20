@@ -10,7 +10,8 @@ export const useHandler = () => {
   const navigate = useNavigate();
   const handleClick = useCallback(() => {
     console.log(`Clicked button!`);
-    signInWithEmailAndPassword(auth, 'ilya.mikhaylyukov@gmail.com', '$k42kg12uu')
+    // вставить сюда реальные данные пользхователя через пропс
+    signInWithEmailAndPassword(auth, 'email', 'password')
       .then(() => {
         alert('Signed-in E-mail -> Welcome!');
         navigate('/');

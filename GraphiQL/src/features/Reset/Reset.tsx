@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { auth, sendPasswordResetEmail } from '../authentication/firebase';
 import './Reset.css';
+// mport { Input } from '@/shared/ui/Input/Input';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Reset() {
   const [email, setEmail] = useState('');
@@ -19,12 +21,12 @@ function Reset() {
   }
 
   const handleSendPasswordResetEmail = () => {
+    if (email) toast.info('Check your inbox please');
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        alert('Check your inbox -> You will be redirected!');
         navigate('/');
       })
-      .catch((error) => alert(error)); // Handle sign-in error
+      .catch((error) => toast.error(error.message)); // Handle reset error
   };
 
   return (
@@ -44,6 +46,7 @@ function Reset() {
           Dont have an account? <Link to="/register">Register</Link> now.
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

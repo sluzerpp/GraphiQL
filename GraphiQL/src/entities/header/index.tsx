@@ -5,13 +5,19 @@ import { useTranslation } from 'react-i18next';
 import i18n from 'i18n';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useHandler } from 'features/authentication/handler';
+import { logout } from '@/features/authentication/firebase';
+// import { useHandler } from 'features/authentication/handler';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { AuthContext } from 'features/authentication/ValidateAccessToken/Auth';
+import { auth } from 'features/authentication/firebase';
+// import Icon from 'shared/ui/Icon/Icon';
 
 export default function Header({}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [activeLang, setActiveLang] = useState(i18n.language);
-  const handleInClick = useHandler();
+  //const handleInClick = useHandler();
+  const [user] = useAuthState(auth);
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
     setActiveLang(lang);
@@ -56,12 +62,27 @@ export default function Header({}) {
       </div>
 
       <nav className={classes.nav}>
-        <Button type="submit" onClick={handleInClick}>
-          {t('header.buttons.in')}
-        </Button>
-        <Button type="submit" onClick={() => navigate('/register')}>
-          {t('header.buttons.up')}
-        </Button>
+        <AuthContext.Provider value={{ currentUser: user }}>
+          {user ? (
+            <>
+              <Button type="submit" onClick={() => navigate('/main')}>
+                {t('header.buttons.main')}
+              </Button>
+              <Button type="submit" onClick={logout}>
+                {t('header.buttons.out')}
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button type="submit" onClick={() => navigate('/auth')}>
+                {t('header.buttons.in')}
+              </Button>
+              <Button type="submit" onClick={() => navigate('/register')}>
+                {t('header.buttons.up')}
+              </Button>
+            </>
+          )}
+        </AuthContext.Provider>
       </nav>
     </header>
   );

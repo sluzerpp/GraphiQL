@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import classes from './style.module.scss';
 import Button from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type RegisterFormData = {
   name: string;
@@ -46,6 +48,7 @@ function Register() {
     };
     if (!validateEmail(data.email)) {
       setError('email', { message: 'Please enter a valid email address' });
+      toast.error('Please enter a valid email address');
       return;
     }
 
@@ -54,6 +57,7 @@ function Register() {
         message:
           'Please enter a strong \npassword with at least 8 characters,\n one letter, one digit, and one special \ncharacter',
       });
+      toast.error('Please enter a valid email address');
       return;
     }
 
@@ -61,13 +65,14 @@ function Register() {
       setErrorFirebase('');
       setLoading(true);
       await registerWithEmailAndPassword(data.name, data.email, data.password);
+      toast.success('Successful!');
       navigate('/');
     } catch {
       setErrorFirebase('Failed to Register');
+      toast.error('Failed to Register');
     }
 
     setLoading(false);
-    alert('RegisterWithEmailAndPassword-> Success!');
   };
 
   return (
@@ -100,6 +105,7 @@ function Register() {
           Already have an account? <Link to="/auth">Login</Link> now.
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

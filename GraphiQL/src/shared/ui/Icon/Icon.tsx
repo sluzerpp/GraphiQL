@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './Icon.module.css';
+import css from './Icon.module.scss';
 import cn from 'classnames';
 
 export type IconType =
@@ -12,6 +12,7 @@ export type IconType =
   | 'loader'
   | 'x'
   | 'chevronDown'
+  | 'error'
   | 'toggleRight';
 
 export type IconProps = {

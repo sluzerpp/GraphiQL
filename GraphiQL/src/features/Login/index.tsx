@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, signInWithEmailAndPassword, signInWithGoogle } from '../authentication/firebase';
@@ -6,6 +7,9 @@ import { AuthContext } from '../authentication/ValidateAccessToken/Auth';
 import classes from './style.module.scss';
 import Button from '@/shared/ui/Button';
 import { useTranslation } from 'react-i18next';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import { useForm } from 'react-hook-form';
 // добавить сюда валидацию полей формы
 // import { limitToLast } from 'firebase/firestore';
@@ -24,6 +28,7 @@ export default function AuthForm() {
   // const [authUser, setAuthUser] = useState<IAuthUser | null>(null);
   // const [setError] = useState('');
   const navigate = useNavigate();
+  let currentToast = null;
 
   useEffect(() => {
     if (loading) {
@@ -41,7 +46,7 @@ export default function AuthForm() {
   // если мы вошли то идем на главную -> navigate('/');
   if (currentUser) {
     console.log('currentUser - там лежит>>>', currentUser);
-    navigate('/');
+    navigate('/main');
   }
 
   const handleSignIn = () => {
@@ -59,54 +64,63 @@ export default function AuthForm() {
         */
         // setAuthUser(authUser);
         // console.log('Auth User - там лежит', authUser);
-        navigate('/');
-        alert('Signed-in E-mail -> Welcome!');
+        toast.success('Welcome- You have logged-in!');
+        navigate('/main');
       })
       .catch((error) => {
-        alert(error.message);
+        console.log(error.message);
+        currentToast = toast.error(error.message);
+        throw new Error('Log-in Error Occurred');
       });
   };
 
   const handleSignInWithGoogle = () => {
     signInWithGoogle()
       .then(() => {
-        alert('Signed-in Google -> Welcome!');
+        toast.success('Welcome- You have logged-in!');
         navigate('/');
       })
-      .catch((error) => alert(error)); // Handle sign-in error
+      .catch((error) => {
+        console.log(error.message);
+        currentToast = toast.error(error.message);
+        throw new Error('Log-in Error Occurred');
+      });
   };
 
   return (
-    <div className={classes.login}>
-      <div className={classes.login__container}>
-        <input
-          type="text"
-          className={classes.login__textBox}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder={t('forms.common.email') || ''}
-        />
-        <input
-          type="password"
-          className={classes.login__textBox}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder={t('forms.common.password') || ''}
-        />
-        <Button style="black" onClick={handleSignIn}>
-          {t('forms.auth.button')}
-        </Button>
-        <Button style="blue" onClick={handleSignInWithGoogle}>
-          {t('forms.auth.buttonGoogle')}
-        </Button>
-        <div>
-          <Link to="/reset">{t('forms.auth.reset')}</Link>
-        </div>
-        <div>
-          {t('forms.auth.notes.note1')} <Link to="/register">{t('forms.auth.notes.link')}</Link>
-          {t('forms.auth.notes.note2')}
+    <ErrorBoundary fallback={currentToast}>
+      <div className={classes.login}>
+        <div className={classes.login__container}>
+          <input
+            type="text"
+            className={classes.login__textBox}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={t('forms.common.email') || ''}
+          />
+          <input
+            type="password"
+            className={classes.login__textBox}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder={t('forms.common.password') || ''}
+          />
+          <Button style="black" onClick={handleSignIn}>
+            {t('forms.auth.button')}
+          </Button>
+          <Button style="blue" onClick={handleSignInWithGoogle}>
+            {t('forms.auth.buttonGoogle')}
+          </Button>
+          <div>
+            <Link to="/reset">{t('forms.auth.reset')}</Link>
+          </div>
+          <div>
+            {t('forms.auth.notes.note1')} <Link to="/register">{t('forms.auth.notes.link')}</Link>
+            {t('forms.auth.notes.note2')}
+          </div>
         </div>
       </div>
-    </div>
+      <ToastContainer />
+    </ErrorBoundary>
   );
 }
