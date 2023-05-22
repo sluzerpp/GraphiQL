@@ -3,7 +3,9 @@
 		"buttons": {
 			"in": "Sign In",
 			"up": "Sign Up",
-			"out": "Sign Out"
+			"out": "Sign Out",
+			"main": "Go to Main"
+
 		},
 		"lang": {
 			"en": "en",
@@ -26,17 +28,17 @@
 				{
 					"name": "Margarita",
 					"git": "margarita-sipach",
-					"responses": ["1", "2"]
+					"responses": ["Wow", "Great"]
 				},
 				{
-					"name": "name1",
-					"git": "git1",
-					"responses": ["1", "2"]
+					"name": "Dmitry",
+					"git": "sluzerpp",
+					"responses": ["Wow", "Great"]
 				},
 				{
-					"name": "name2",
-					"git": "git2",
-					"responses": ["1", "2"]
+					"name": "Ilya",
+					"git": "imikh1991",
+					"responses": ["Wow", "Great"]
 				}
 			]
 		}

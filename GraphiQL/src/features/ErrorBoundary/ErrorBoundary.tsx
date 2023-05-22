@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { auth } from '../authentication/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -8,22 +8,25 @@ type ErrorBoundaryProps = {
 };
 
 const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ fallback, children }) => {
-  //const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [AuthError] = useAuthState(auth);
 
   const logErrorToMyService = (error: Error, componentStack: string | null) => {
     // Implement your error logging logic here
+    // всплывает все время ошибка Firebase и ничего не работает
+    // но логика хорошая - привязка AuthError FIREBASE
     if (AuthError) console.log('Я ошибка Firebase>>>', AuthError);
     console.error(error);
     console.log(componentStack);
   };
 
   const handleComponentError = (error: Error, info: React.ErrorInfo) => {
-    //setHasError(true);
+    setHasError(true);
     logErrorToMyService(error, info.componentStack);
   };
-
-  if (AuthError) {
+  // по идее привязка AuthError firebase
+  if (hasError && AuthError) {
+    // if (AuthError) {
     return <>{fallback}</>;
   }
   return (

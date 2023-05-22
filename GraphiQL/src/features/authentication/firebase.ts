@@ -16,14 +16,10 @@ import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
-
 const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
@@ -37,7 +33,6 @@ const signInWithGoogle = async () => {
         authProvider: 'google',
         email: user.email,
       });
-      toast.success('Successful!');
     }
   } catch (err) {
     console.error(err);
@@ -47,7 +42,6 @@ const signInWithGoogle = async () => {
 const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    toast.success('Successful!');
   } catch (err) {
     console.error(err);
   }
@@ -63,7 +57,6 @@ const registerWithEmailAndPassword = async (name: string, email: string, passwor
       authProvider: 'local',
       email,
     });
-    toast.success('Successful!');
   } catch (err) {
     console.error(err);
   }
@@ -72,14 +65,12 @@ const registerWithEmailAndPassword = async (name: string, email: string, passwor
 const sendPasswordReset = async (email: string) => {
   try {
     await sendPasswordResetEmail(auth, email);
-    toast.success('Link-Sent- Check you E-mail!');
   } catch (err) {
     console.error(err);
   }
 };
 
 const logout = () => {
-  toast.success('Logged-Out!');
   signOut(auth);
 };
 

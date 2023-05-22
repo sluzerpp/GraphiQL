@@ -3,7 +3,8 @@
 		"buttons": {
 			"in": "Войти",
 			"up": "Зарегистрироваться",
-			"out": "Выйти"
+			"out": "Выйти",
+			"main": "Главная"
 		},
 		"lang": {
 			"en": "анг",
@@ -26,17 +27,17 @@
 			{
 			"name": "Маргарита",
 			"git": "margarita-sipach",
-			"responses": ["1", "2"]
+			"responses": ["Вау", "Супер"]
 		},
 		{
-			"name": "name1",
-			"git": "git1",
-			"responses": ["1", "2"]
+			"name": "Дмитрий",
+			"git": "sluzerpp",
+			"responses": ["Вау", "Супер"]
 		},
 		{
-			"name": "name2",
-			"git": "git2",
-			"responses": ["1", "2"]
+			"name": "Илья",
+			"git": "imikh1991",
+			"responses": ["Вау", "Супер"]
 		}
 	]
 	}},

@@ -25,10 +25,12 @@ function Register() {
   } = useForm<RegisterFormData>();
   const [error, setErrorFirebase] = useState('');
   const [loading, setLoading] = useState(false);
+  // const [valid, setValid] = useState(false);
+  // check if userData is valid
   // const [user] = useAuthState(auth);
 
   const navigate = useNavigate();
-
+  console.log(loading);
   /*useEffect(() => {
     if (user) navigate('/dashboard');
   }, [user, navigate]);
@@ -55,23 +57,22 @@ function Register() {
     if (!validatePassword(data.password)) {
       setError('password', {
         message:
-          'Please enter a strong \npassword with at least 8 characters,\n one letter, one digit, and one special \ncharacter',
+          'Please enter a strong password with at least 8 characters, one letter, one digit, and one special character',
       });
-      toast.error('Please enter a valid email address');
+      toast.error('Please enter a valid password');
       return;
     }
 
     try {
       setErrorFirebase('');
       setLoading(true);
-      await registerWithEmailAndPassword(data.name, data.email, data.password);
       toast.success('Successful!');
-      navigate('/');
+      await registerWithEmailAndPassword(data.name, data.email, data.password);
     } catch {
       setErrorFirebase('Failed to Register');
       toast.error('Failed to Register');
     }
-
+    // setValid(true);
     setLoading(false);
   };
 
@@ -79,7 +80,11 @@ function Register() {
     <div className={classes.register}>
       <div className={classes.register__container}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input type="text" placeholder="Full Name" register={register('name')} />
+          <Input
+            type="text"
+            placeholder="Full Name"
+            register={register('name', { required: true })}
+          />
           <div className="error">{errors.name && <div>{errors.name.message}</div>}</div>
           <Input
             type="text"
@@ -94,10 +99,27 @@ function Register() {
           />
           <div className="error">{errors.password && <div>{errors.password.message}</div>}</div>
           <div className="error">{error && <div>{error}</div>}</div>
-          <Button style="black" disabled={loading} type="submit">
+          <Button
+            style="black"
+            disabled={loading}
+            type="submit"
+            onClick={() => {
+              toast.info('Check your Data!');
+              //if (valid) toast.success('Success- valid!');
+              //else toast.info('Check Register Information!');
+            }}
+          >
             Register
           </Button>
-          <Button style="blue" onClick={signInWithGoogle}>
+          <Button
+            style="blue"
+            onClick={() => {
+              signInWithGoogle();
+              toast.success('Successful!');
+              navigate('/main');
+            }}
+            type="submit"
+          >
             Register with Google
           </Button>
         </form>

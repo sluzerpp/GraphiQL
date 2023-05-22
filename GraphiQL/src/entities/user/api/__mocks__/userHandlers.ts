@@ -1,4 +1,4 @@
-import { rest } from 'msw';
+/*import { rest } from 'msw';
 import { config, parseTokenFromRequest, verifyAccessToken } from '@/shared/lib';
 
 export const userHandlers = [
@@ -19,3 +19,4 @@ export const userHandlers = [
     }
   }),
 ];
+*/

@@ -7,9 +7,6 @@ import { AuthContext } from '../authentication/ValidateAccessToken/Auth';
 import classes from './style.module.scss';
 import Button from '@/shared/ui/Button';
 import { useTranslation } from 'react-i18next';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 // import { useForm } from 'react-hook-form';
 // добавить сюда валидацию полей формы
 // import { limitToLast } from 'firebase/firestore';
@@ -28,7 +25,6 @@ export default function AuthForm() {
   // const [authUser, setAuthUser] = useState<IAuthUser | null>(null);
   // const [setError] = useState('');
   const navigate = useNavigate();
-  let currentToast = null;
 
   useEffect(() => {
     if (loading) {
@@ -42,10 +38,10 @@ export default function AuthForm() {
 
   const { currentUser } = useContext(AuthContext);
   console.log('Context currentUser token >>', currentUser?.refreshToken);
+
   // берем из контекста AuthContext
   // если мы вошли то идем на главную -> navigate('/');
   if (currentUser) {
-    console.log('currentUser - там лежит>>>', currentUser);
     navigate('/main');
   }
 
@@ -64,64 +60,56 @@ export default function AuthForm() {
         */
         // setAuthUser(authUser);
         // console.log('Auth User - там лежит', authUser);
-        toast.success('Welcome- You have logged-in!');
         navigate('/main');
       })
       .catch((error) => {
         console.log(error.message);
-        currentToast = toast.error(error.message);
         throw new Error('Log-in Error Occurred');
       });
   };
 
   const handleSignInWithGoogle = () => {
-    setTimeout(() => toast.success('Welcome- You have logged-in!'), 3000);
-    // поправить этот позор - разобраться почему не всплывает нормально
     signInWithGoogle()
       .then(() => {
-        navigate('/');
+        navigate('/main');
       })
       .catch((error) => {
         console.log(error.message);
-        currentToast = toast.error(error.message);
         throw new Error('Log-in Error Occurred');
       });
   };
 
   return (
-    <ErrorBoundary fallback={currentToast}>
-      <div className={classes.login}>
-        <div className={classes.login__container}>
-          <input
-            type="text"
-            className={classes.login__textBox}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder={t('forms.common.email') || ''}
-          />
-          <input
-            type="password"
-            className={classes.login__textBox}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder={t('forms.common.password') || ''}
-          />
-          <Button style="black" onClick={handleSignIn}>
-            {t('forms.auth.button')}
-          </Button>
-          <Button style="blue" onClick={handleSignInWithGoogle}>
-            {t('forms.auth.buttonGoogle')}
-          </Button>
-          <div>
-            <Link to="/reset">{t('forms.auth.reset')}</Link>
-          </div>
-          <div>
-            {t('forms.auth.notes.note1')} <Link to="/register">{t('forms.auth.notes.link')}</Link>
-            {t('forms.auth.notes.note2')}
-          </div>
+    <div className={classes.login}>
+      <div className={classes.login__container}>
+        <input
+          type="text"
+          className={classes.login__textBox}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={t('forms.common.email') || ''}
+        />
+        <input
+          type="password"
+          className={classes.login__textBox}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder={t('forms.common.password') || ''}
+        />
+        <Button style="black" onClick={handleSignIn}>
+          {t('forms.auth.button')}
+        </Button>
+        <Button style="blue" onClick={handleSignInWithGoogle}>
+          {t('forms.auth.buttonGoogle')}
+        </Button>
+        <div>
+          <Link to="/reset">{t('forms.auth.reset')}</Link>
+        </div>
+        <div>
+          {t('forms.auth.notes.note1')} <Link to="/register">{t('forms.auth.notes.link')}</Link>
+          {t('forms.auth.notes.note2')}
         </div>
       </div>
-      <ToastContainer />
-    </ErrorBoundary>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 // import { z } from 'zod';
-
+// УБРАТЬ В САМОМ КОНЦЕ ЕСЛТИ НЕ ПРИГОДИТСЯ
 /* ВОЗМОЖНО ПОНАДОБИТСЯ
 const envVariables = z.object({
   VITE_API_ENDPOINT: z.string().url(),
@@ -13,7 +13,7 @@ envVariables.parse(import.meta.env);
 
  declare global {
   type ImportMetaEnv = z.infer<typeof envVariables>;
-} */
+} 
 
 export const config = {
   API_ENDPOINT: import.meta.env.VITE_API_ENDPOINT,
@@ -22,3 +22,4 @@ export const config = {
   API_USER_PASSWORD: import.meta.env.VITE_API_USER_PASSWORD,
   JWT_SECRET: import.meta.env.VITE_JWT_SECRET,
 } as const;
+*/

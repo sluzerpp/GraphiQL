@@ -25,13 +25,14 @@ export const AuthProvider = ({ children }: Props) => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       // при 🔴🔴🔴 изменении состояния пользователя идем на главную
+      // проверить как работает- по истечению 60 минут
       if (user !== null) {
         // setCurrentUser(auth.currentUser);
         // setPending(false);
         // нужно чтобы разлогинивался
         navigate('/auth');
-        setCurrentUser(auth.currentUser);
-        setPending(false);
+        setCurrentUser(null);
+        setPending(true);
       } else {
         navigate('/auth');
         setCurrentUser(null);

@@ -9,7 +9,7 @@ export default function Section({ title, children }: SectionProps) {
   return (
     <section className={classes.section} key={title}>
       <h2 className={classes.section__title}>{title}</h2>
-      <p className={classes.section__content}>{children}</p>
+      <div className={classes.section__content}>{children}</div>
     </section>
   );
 }

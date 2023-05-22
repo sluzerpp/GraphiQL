@@ -1,7 +1,7 @@
-import * as jose from 'jose';
+/* import * as jose from 'jose';
 import { type RestRequest } from 'msw';
 import { config } from './config';
-
+УБРАТЬ В САМОМ КОНЦЕ ЕСЛТИ НЕ ПРИГОДИТСЯ
 export async function signAccessToken(payload: Record<string, unknown>) {
   const secret = new TextEncoder().encode(config.JWT_SECRET);
 
@@ -25,3 +25,4 @@ export function parseTokenFromRequest(req: RestRequest) {
 
   return token;
 }
+*/
