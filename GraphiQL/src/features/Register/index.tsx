@@ -83,13 +83,11 @@ function Register() {
       <div className={classes.register__container}>
         <form className={classes.register__form} onSubmit={handleSubmit(onSubmit)}>
           <Input
-            type="text"
             placeholder={t('forms.common.name')}
             register={register('name', { required: true })}
           />
           <div className="error">{errors.name && <div>{errors.name.message}</div>}</div>
           <Input
-            type="text"
             placeholder={t('forms.common.email')}
             register={register('email', { required: true })}
           />
