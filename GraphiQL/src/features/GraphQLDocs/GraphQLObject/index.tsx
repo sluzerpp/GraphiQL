@@ -40,7 +40,7 @@ export default function GraphQLObject({
   }
 
   if (object instanceof GraphQLScalarType) {
-    return <ScalarElem object={object}></ScalarElem>;
+    return <ScalarElem object={object} />;
   }
 
   return <></>;

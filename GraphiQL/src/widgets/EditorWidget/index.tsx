@@ -27,32 +27,25 @@ export default function EditorWidget({ schema, isLoading }: EditorWidgetProps) {
     <div className="editor-widget">
       <div className="column">
         <div className="editor-wrapper">
-          <EditorGraphQL
-            value={query}
-            schema={schema}
-            isLoading={isLoading}
-            setValue={setQuery}
-          ></EditorGraphQL>
+          <EditorGraphQL value={query} schema={schema} isLoading={isLoading} setValue={setQuery} />
           <div className="editor-controls">
-            <SubmitButton onClick={onClickHandler}></SubmitButton>
+            <SubmitButton onClick={onClickHandler} />
           </div>
         </div>
         <Tabs
           items={[
             {
               name: t('main.var'),
-              element: <EditorJSON value={vars} setValue={setVars}></EditorJSON>,
+              element: <EditorJSON value={vars} setValue={setVars} />,
             },
             {
               name: t('main.head'),
-              element: <EditorJSON value={headers} setValue={setHeaders}></EditorJSON>,
+              element: <EditorJSON value={headers} setValue={setHeaders} />,
             },
           ]}
         />
       </div>
-      <div className="column">
-        {!isResultLoading ? <ViewJSON value={response}></ViewJSON> : <Spinner></Spinner>}
-      </div>
+      <div className="column">{!isResultLoading ? <ViewJSON value={response} /> : <Spinner />}</div>
     </div>
   );
 }

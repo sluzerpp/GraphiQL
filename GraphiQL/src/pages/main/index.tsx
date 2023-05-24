@@ -26,13 +26,13 @@ export default function MainPage() {
       <div className={styles.doc}>
         <ControlSideBar>
           <div className="group">
-            <SubmitButton onClick={() => setIsOpen((prev) => !prev)}></SubmitButton>
+            <SubmitButton onClick={() => setIsOpen((prev) => !prev)} />
           </div>
-          <SubmitButton onClick={() => getSchema(true)}></SubmitButton>
+          <SubmitButton onClick={() => getSchema(true)} />
         </ControlSideBar>
-        <GraphQLDocs isLoading={isLoading} isOpen={isOpen} schema={schema}></GraphQLDocs>
+        <GraphQLDocs isLoading={isLoading} isOpen={isOpen} schema={schema} />
       </div>
-      <EditorWidget schema={schema} isLoading={isLoading}></EditorWidget>
+      <EditorWidget schema={schema} isLoading={isLoading} />
     </div>
   );
 }
