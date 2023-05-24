@@ -21,7 +21,7 @@ export default function FieldElem({ object, setHistoryItem }: FieldElemProps) {
               <div key={arg.name} className="graphql-type__arg">
                 {`${name}: `}
                 <button onClick={() => setHistoryItem(arg.type)}>{type}</button>
-                {id < object.args.length - 1 ? ',' : ''}
+                {id < object.args.length - 1 && ','}
               </div>
             );
           })}

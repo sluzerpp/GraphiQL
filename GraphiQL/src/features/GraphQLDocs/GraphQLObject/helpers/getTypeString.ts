@@ -12,11 +12,7 @@ const getOutputTypeString = (object: GraphQLOutputType | GraphQLInputType): stri
   if (object instanceof GraphQLNonNull) {
     return `${getOutputTypeString(object.ofType)}!`;
   }
-  if (
-    object instanceof GraphQLObjectType ||
-    object instanceof GraphQLInputObjectType ||
-    object instanceof GraphQLScalarType
-  ) {
+  if (object instanceof (GraphQLObjectType || GraphQLInputObjectType || GraphQLScalarType)) {
     return object.name;
   }
   if (object instanceof GraphQLList) {

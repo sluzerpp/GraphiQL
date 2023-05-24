@@ -39,17 +39,10 @@ function Register() {
   */
   const onSubmit = async (data: RegisterFormData) => {
     // Validate Fuctions
-    const validateEmail = (email: string) => {
-      // A regular expression for checking if the email is valid
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    };
+    const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const validatePassword = (password: string) =>
+      /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/.test(password);
 
-    const validatePassword = (password: string) => {
-      // A regular expression for checking if the password is strong enough
-      const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/;
-      return passwordRegex.test(password);
-    };
     if (!validateEmail(data.email)) {
       setError('email', { message: 'Please enter a valid email address' });
       toast.error('Please enter a valid email address');
@@ -105,6 +98,7 @@ function Register() {
             type="submit"
             onClick={() => {
               toast.info('Check your Data!');
+              navigate('/main');
               //if (valid) toast.success('Success- valid!');
               //else toast.info('Check Register Information!');
             }}

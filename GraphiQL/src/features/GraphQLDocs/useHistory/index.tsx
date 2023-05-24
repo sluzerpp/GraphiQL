@@ -11,7 +11,7 @@ export default function useHistory() {
     if (history.length > 0) {
       setPrevObject(history[history.length - 1]);
     }
-    if (object instanceof GraphQLList || object instanceof GraphQLNonNull) {
+    if (object instanceof (GraphQLList || GraphQLNonNull)) {
       return setHistoryObject(object.ofType);
     } else {
       setHistory([...history, object]);
