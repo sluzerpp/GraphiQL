@@ -106,7 +106,7 @@ export default function AuthForm() {
           <Link to="/reset">{t('forms.auth.reset')}</Link>
         </div>
         <div>
-          {t('forms.auth.notes.note1')} <Link to="/register">{t('forms.auth.notes.link')}</Link>
+          {t('forms.auth.notes.note1')} <Link to="/register">{t('forms.auth.notes.link')}</Link>{' '}
           {t('forms.auth.notes.note2')}
         </div>
       </div>

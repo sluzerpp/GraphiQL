@@ -4,6 +4,7 @@ import RootElem from './RootElem';
 import FieldElem from './FieldElem';
 import ScalarElem from './ScalarElem';
 import './index.scss';
+import { useTranslation } from 'react-i18next';
 
 interface GraphQLObjectProps {
   object: GraphQLUnknownObject;
@@ -18,6 +19,7 @@ export default function GraphQLObject({
   isRoot,
   setHistoryItem,
 }: GraphQLObjectProps) {
+  const { t } = useTranslation();
   if (object instanceof GraphQLObjectType || object instanceof GraphQLInputObjectType) {
     if (isRoot) {
       return <RootElem object={object} setHistoryItem={setHistoryItem} name={name} />;
@@ -27,7 +29,7 @@ export default function GraphQLObject({
     const keys = Object.keys(fieldMap);
     return (
       <div className="graphql-type__container">
-        <div className="graphql-type__title">• Fields</div>
+        <div className="graphql-type__title">• {t('main.field')}</div>
         <div className="graphql-type__fields">
           {keys.map((key) => (
             <FieldElem key={key} setHistoryItem={setHistoryItem} object={fieldMap[key]} />

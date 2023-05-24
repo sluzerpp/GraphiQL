@@ -8,6 +8,7 @@ import { GraphQLSchema } from 'graphql';
 import Spinner from 'shared/ui/Spinner';
 import useFetchUserQuery from 'features/useFetchUserQuery';
 import Tabs from 'features/Tabs';
+import { useTranslation } from 'react-i18next';
 
 interface EditorWidgetProps {
   schema?: GraphQLSchema;
@@ -15,6 +16,7 @@ interface EditorWidgetProps {
 }
 
 export default function EditorWidget({ schema, isLoading }: EditorWidgetProps) {
+  const { t } = useTranslation();
   const [query, setQuery] = useState('');
   const [vars, setVars] = useState('');
   const [headers, setHeaders] = useState('');
@@ -37,9 +39,12 @@ export default function EditorWidget({ schema, isLoading }: EditorWidgetProps) {
         </div>
         <Tabs
           items={[
-            { name: 'Vars', element: <EditorJSON value={vars} setValue={setVars}></EditorJSON> },
             {
-              name: 'Headers',
+              name: t('main.var'),
+              element: <EditorJSON value={vars} setValue={setVars}></EditorJSON>,
+            },
+            {
+              name: t('main.head'),
               element: <EditorJSON value={headers} setValue={setHeaders}></EditorJSON>,
             },
           ]}

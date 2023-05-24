@@ -68,5 +68,12 @@
 			"note2": "now."
 		}
 	}
+},
+"main": {
+	"var": "Vars",
+	"head": "Headers",
+	"doc": "Docs",
+	"root": "Root Types",
+	"field": "Fields"
 }
 }

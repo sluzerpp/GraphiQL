@@ -81,7 +81,7 @@ function Register() {
   return (
     <div className={classes.register}>
       <div className={classes.register__container}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className={classes.register__form} onSubmit={handleSubmit(onSubmit)}>
           <Input
             type="text"
             placeholder={t('forms.common.name')}
@@ -126,8 +126,7 @@ function Register() {
           </Button>
         </form>
         <div>
-          {t('forms.register.notes.note1')}{' '}
-          <Link to="/auth">{t('forms.register.notes.link')} </Link>
+          {t('forms.register.notes.note1')} <Link to="/auth">{t('forms.register.notes.link')}</Link>{' '}
           {t('forms.register.notes.note2')}
         </div>
       </div>
