@@ -8,11 +8,18 @@
   background-color: #282c34;
   overflow-y: auto;
 
+	&_none{
+		height: auto;
+		flex: none;
+	}
+
   &__header {
     display: flex;
     padding: 10px;
     gap: 5px;
     position: relative;
+		display: flex;
+		justify-content: space-between;
 
     &::after {
       display: block;
@@ -26,6 +33,17 @@
       transform: translateX(-50%);
     }
   }
+
+	&__nav{
+		display: flex;
+	}
+
+	&__close{
+		background: none;
+		color: white;
+		font-size: 18px;
+		padding: 10px 25px;
+	}
 
   &__tab {
     padding: 10px 25px;

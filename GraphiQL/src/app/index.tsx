@@ -5,7 +5,7 @@ import Routing from 'pages';
 function App() {
   return (
     <div>
-      <Routing></Routing>
+      <Routing />
     </div>
   );
 }

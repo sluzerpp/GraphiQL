@@ -46,6 +46,7 @@
 "forms": {
 	"common": {
 		"email": "E-mail Address",
+		"name": "Full Name",
 		"password": "Password"
 	},
 	"auth": {
@@ -59,7 +60,20 @@
 		}
 	},
 	"register": {
-
+		"button": "Register",
+		"buttonGoogle": "Register with Google",
+		"notes": {
+			"note1": "Already have an account?",
+			"link": "Login",
+			"note2": "now."
+		}
 	}
+},
+"main": {
+	"var": "Vars",
+	"head": "Headers",
+	"doc": "Docs",
+	"root": "Root Types",
+	"field": "Fields"
 }
 }

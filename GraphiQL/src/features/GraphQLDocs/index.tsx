@@ -5,6 +5,7 @@ import GraphQLObject from './GraphQLObject';
 import PrevButton from './PrevButton';
 import './index.scss';
 import Spinner from '@/shared/ui/Spinner';
+import { useTranslation } from 'react-i18next';
 
 interface DocsProps {
   schema?: GraphQLSchema;
@@ -19,6 +20,7 @@ const rootTypes = [
 ];
 
 function GraphQLDocs({ schema, isLoading, isOpen }: DocsProps) {
+  const { t } = useTranslation();
   const { setHistoryObject, goToPrevHistoryObject, clearHistory, currentObject, prevObject } =
     useHistory();
 
@@ -30,14 +32,14 @@ function GraphQLDocs({ schema, isLoading, isOpen }: DocsProps) {
             {prevObject ? (
               <PrevButton name={prevObject.name || 'Unknown'} callback={goToPrevHistoryObject} />
             ) : currentObject ? (
-              <PrevButton name={'Docs'} callback={clearHistory} />
+              <PrevButton name={t('main.doc')} callback={clearHistory} />
             ) : null}
-            <div className="docs__name">{currentObject ? currentObject.name : 'Docs'}</div>
+            <div className="docs__name">{currentObject ? currentObject.name : t('main.doc')}</div>
             {currentObject ? (
               <GraphQLObject setHistoryItem={setHistoryObject} object={currentObject} />
             ) : (
               <div className="graphql-type__container">
-                <div className="graphql-type__title">♦ Root Types</div>
+                <div className="graphql-type__title">♦ {t('main.root')}</div>
                 {rootTypes.map((rootType) => (
                   <GraphQLObject
                     setHistoryItem={setHistoryObject}

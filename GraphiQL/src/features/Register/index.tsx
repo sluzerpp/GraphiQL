@@ -8,6 +8,7 @@ import Button from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input/Input';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from 'react-i18next';
 
 type RegisterFormData = {
   name: string;
@@ -16,6 +17,7 @@ type RegisterFormData = {
 };
 
 function Register() {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -37,17 +39,10 @@ function Register() {
   */
   const onSubmit = async (data: RegisterFormData) => {
     // Validate Fuctions
-    const validateEmail = (email: string) => {
-      // A regular expression for checking if the email is valid
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    };
+    const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const validatePassword = (password: string) =>
+      /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/.test(password);
 
-    const validatePassword = (password: string) => {
-      // A regular expression for checking if the password is strong enough
-      const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/;
-      return passwordRegex.test(password);
-    };
     if (!validateEmail(data.email)) {
       setError('email', { message: 'Please enter a valid email address' });
       toast.error('Please enter a valid email address');
@@ -79,22 +74,20 @@ function Register() {
   return (
     <div className={classes.register}>
       <div className={classes.register__container}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className={classes.register__form} onSubmit={handleSubmit(onSubmit)}>
           <Input
-            type="text"
-            placeholder="Full Name"
+            placeholder={t('forms.common.name')}
             register={register('name', { required: true })}
           />
           <div className="error">{errors.name && <div>{errors.name.message}</div>}</div>
           <Input
-            type="text"
-            placeholder="E-mail Address"
+            placeholder={t('forms.common.email')}
             register={register('email', { required: true })}
           />
           <div className="error">{errors.email && <div>{errors.email.message}</div>}</div>
           <Input
             type="password"
-            placeholder="Password"
+            placeholder={t('forms.common.password')}
             register={register('password', { required: true })}
           />
           <div className="error">{errors.password && <div>{errors.password.message}</div>}</div>
@@ -105,11 +98,12 @@ function Register() {
             type="submit"
             onClick={() => {
               toast.info('Check your Data!');
+              navigate('/main');
               //if (valid) toast.success('Success- valid!');
               //else toast.info('Check Register Information!');
             }}
           >
-            Register
+            {t('forms.register.button')}
           </Button>
           <Button
             style="blue"
@@ -120,11 +114,12 @@ function Register() {
             }}
             type="submit"
           >
-            Register with Google
+            {t('forms.register.buttonGoogle')}
           </Button>
         </form>
         <div>
-          Already have an account? <Link to="/auth">Login</Link> now.
+          {t('forms.register.notes.note1')} <Link to="/auth">{t('forms.register.notes.link')}</Link>{' '}
+          {t('forms.register.notes.note2')}
         </div>
       </div>
       <ToastContainer />

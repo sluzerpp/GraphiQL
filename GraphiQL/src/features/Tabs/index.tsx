@@ -14,22 +14,30 @@ function Tabs({ items }: TabsProps) {
   const [currentItem, setCurrentItem] = useState<TabItem>(items[0]);
 
   const createTabClickHander = (item: TabItem) => () => {
+    setIsVisible(true);
     setCurrentItem(item);
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
-    <div className="tabs">
+    <div className={`tabs ${!isVisible && 'tabs_none'}`}>
       <div className="tabs__header">
-        {items.map((item) => {
-          const className = `tabs__tab ${currentItem.name === item.name ? 'active' : ''}`;
-          return (
-            <div key={item.name} onClick={createTabClickHander(item)} className={className}>
-              {item.name}
-            </div>
-          );
-        })}
+        <div className="tabs__nav">
+          {items.map((item) => {
+            const className = `tabs__tab  ${currentItem.name === item.name ? 'active' : ''}`;
+            return (
+              <div key={item.name} onClick={createTabClickHander(item)} className={className}>
+                {item.name}
+              </div>
+            );
+          })}
+        </div>
+        <button className="tabs__close" onClick={() => setIsVisible(!isVisible)}>
+          {!isVisible ? '▲' : '▼'}
+        </button>
       </div>
-      <div className="tabs__content">{currentItem.element}</div>
+      {isVisible && <div className="tabs__content">{currentItem.element}</div>}
     </div>
   );
 }

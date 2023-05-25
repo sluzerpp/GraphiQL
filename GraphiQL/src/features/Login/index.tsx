@@ -7,6 +7,7 @@ import { AuthContext } from '../authentication/ValidateAccessToken/Auth';
 import classes from './style.module.scss';
 import Button from '@/shared/ui/Button';
 import { useTranslation } from 'react-i18next';
+import { Input } from '@/shared/ui/Input/Input';
 // import { useForm } from 'react-hook-form';
 // добавить сюда валидацию полей формы
 // import { limitToLast } from 'firebase/firestore';
@@ -82,19 +83,12 @@ export default function AuthForm() {
   return (
     <div className={classes.login}>
       <div className={classes.login__container}>
-        <input
-          type="text"
-          className={classes.login__textBox}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder={t('forms.common.email') || ''}
-        />
-        <input
+        <Input value={email} onChange={setEmail} placeholder={t('forms.common.email')} />
+        <Input
           type="password"
-          className={classes.login__textBox}
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder={t('forms.common.password') || ''}
+          onChange={setPassword}
+          placeholder={t('forms.common.password')}
         />
         <Button style="black" onClick={handleSignIn}>
           {t('forms.auth.button')}
@@ -106,7 +100,7 @@ export default function AuthForm() {
           <Link to="/reset">{t('forms.auth.reset')}</Link>
         </div>
         <div>
-          {t('forms.auth.notes.note1')} <Link to="/register">{t('forms.auth.notes.link')}</Link>
+          {t('forms.auth.notes.note1')} <Link to="/register">{t('forms.auth.notes.link')}</Link>{' '}
           {t('forms.auth.notes.note2')}
         </div>
       </div>
