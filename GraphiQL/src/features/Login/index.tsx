@@ -8,28 +8,17 @@ import classes from './style.module.scss';
 import Button from '@/shared/ui/Button';
 import { useTranslation } from 'react-i18next';
 import { Input } from '@/shared/ui/Input/Input';
-// import { useForm } from 'react-hook-form';
-// добавить сюда валидацию полей формы
-// import { limitToLast } from 'firebase/firestore';
-// import firebase from 'firebase/compat/app';
-/*interface IAuthUser {
-  id: string | undefined;
-  email: string | null | undefined;
-  token: string | undefined;
-} */
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function AuthForm() {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, loading, error] = useAuthState(auth);
-  // const [authUser, setAuthUser] = useState<IAuthUser | null>(null);
-  // const [setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     if (loading) {
-      // maybe trigger a loading screen
       return;
     }
   }, [user, loading, navigate]);
@@ -38,8 +27,6 @@ export default function AuthForm() {
   }
 
   const { currentUser } = useContext(AuthContext);
-  console.log('Context currentUser token >>', currentUser?.refreshToken);
-
   // берем из контекста AuthContext
   // если мы вошли то идем на главную -> navigate('/');
   if (currentUser) {
@@ -49,22 +36,11 @@ export default function AuthForm() {
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        /*const authUser: IAuthUser = {
-          id: user?.uid,
-          email: user?.email,
-          token: user?.refreshToken,
-        }; 
-        if (currentUser) {
-          console.log('currentUser - там лежит>>>', currentUser);
-          navigate('/');
-        }
-        */
-        // setAuthUser(authUser);
-        // console.log('Auth User - там лежит', authUser);
         navigate('/main');
       })
       .catch((error) => {
         console.log(error.message);
+        toast.error('Oops! Something went wrong.');
         throw new Error('Log-in Error Occurred');
       });
   };
@@ -104,6 +80,7 @@ export default function AuthForm() {
           {t('forms.auth.notes.note2')}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

@@ -45,7 +45,6 @@ function Register() {
 
     if (!validateEmail(data.email)) {
       setError('email', { message: 'Please enter a valid email address' });
-      toast.error('Please enter a valid email address');
       return;
     }
 
@@ -98,9 +97,6 @@ function Register() {
             type="submit"
             onClick={() => {
               toast.info('Check your Data!');
-              navigate('/main');
-              //if (valid) toast.success('Success- valid!');
-              //else toast.info('Check Register Information!');
             }}
           >
             {t('forms.register.button')}

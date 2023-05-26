@@ -28,17 +28,17 @@
 				{
 					"name": "Margarita",
 					"git": "margarita-sipach",
-					"responses": ["Wow", "Great"]
+					"responses": ["Localization", "Layouts/Styling", "Refactoring"]
 				},
 				{
 					"name": "Dmitry",
 					"git": "sluzerpp",
-					"responses": ["Wow", "Great"]
+					"responses": ["Main Page Logic", "Query Logic", "Optimization"]
 				},
 				{
 					"name": "Ilya",
 					"git": "imikh1991",
-					"responses": ["Wow", "Great"]
+					"responses": ["Firebase", "Auth Logic", "Error Handling"]
 				}
 			]
 		}

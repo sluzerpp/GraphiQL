@@ -9,7 +9,6 @@ import classes from './style.module.scss';
 import Section from 'entities/section';
 import { useTranslation } from 'react-i18next';
 import { CreatorType, SectionType } from 'type';
-
 export default function Welcome() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -17,18 +16,13 @@ export default function Welcome() {
   console.log(user);
   useEffect(() => {
     // токен авторизации
-    //const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-      // const uid = user.uid;
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         console.log('We have User Now', uid);
       } else {
         // User is signed out
         navigate('/auth');
-        console.log('We DO NOT have User Now', auth);
       }
     });
   }, [navigate]);

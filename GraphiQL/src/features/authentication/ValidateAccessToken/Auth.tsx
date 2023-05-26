@@ -9,11 +9,7 @@ export interface AuthContextType {
 
 export interface Props {
   children?: ReactNode;
-  // any props that come into the component
 }
-/* const Button1 = ({ children, ...props }: Props) => (
-  <Button {...props}>{children}</Button>
-); */
 
 export const AuthContext = React.createContext<AuthContextType>({ currentUser: null });
 
@@ -24,15 +20,10 @@ export const AuthProvider = ({ children }: Props) => {
   const navigate = useNavigate();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      // при 🔴🔴🔴 изменении состояния пользователя идем на главную
-      // проверить как работает- по истечению 60 минут
       if (user !== null) {
-        // setCurrentUser(auth.currentUser);
-        // setPending(false);
-        // нужно чтобы разлогинивался
         navigate('/auth');
-        setCurrentUser(null);
-        setPending(true);
+        setCurrentUser(auth.currentUser);
+        setPending(false);
       } else {
         navigate('/auth');
         setCurrentUser(null);

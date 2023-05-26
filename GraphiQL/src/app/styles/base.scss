@@ -1,13 +1,13 @@
-// :root {
-//   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-//   font-size: 16px;
-//   line-height: 24px;
-//   font-weight: 400;
-//   font-synthesis: none;
-//   text-rendering: optimizelegibility;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
+ :root {
+  font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 24px;   
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+ }
 
 // * {
 //   box-sizing: border-box;
@@ -30,10 +30,6 @@
 //   color: var(--text-color);
 // }
 
-[data-theme="dark"] body {
-  font-weight: 350;
-}
-
 a {
   color: var(--link-color);
 }
@@ -41,20 +37,6 @@ a {
 a:hover {
   text-decoration: underline;
   filter: brightness(80%);
-}
-
-[data-theme="dark"] input {
-  background-color: #0009;
-  border-color: #0009;
-  color: var(--text-color) !important;
-}
-
-[data-theme="dark"] input:focus {
-  color: var(--text-color) !important;
-}
-
-[data-theme="dark"] img {
-  filter: brightness(.8) contrast(1.2);
 }
 
 [data-fsd] {
@@ -76,7 +58,8 @@ a:hover {
   line-height: 1;
   font-weight: bold;
   padding: 0 2px;
-  font-family: sans-serif;
+  font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+  
 }
 
 .text_xs {

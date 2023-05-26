@@ -23,9 +23,6 @@ export const useHandler = () => {
 };
 
 // логика авторизации AuthForm
-// обработка нажатия на кнопки
-// добавить обработку - вынести сюда функции
-// сделать нормальный модуль по человечески
 export const handleSignInWithGoogle = () => {
   signInWithGoogle()
     .then(() => {

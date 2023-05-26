@@ -8,6 +8,9 @@ import {
   signOut,
 } from 'firebase/auth';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
 //import firebase from 'firebase/app';
 import { firebaseConfig } from './firebase-const';
@@ -72,6 +75,7 @@ const sendPasswordReset = async (email: string) => {
 
 const logout = () => {
   signOut(auth);
+  toast.success('Logged-Out');
 };
 
 export {
