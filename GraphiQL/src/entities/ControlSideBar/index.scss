@@ -12,3 +12,18 @@
     gap: 10px;
   }
 }
+
+@media (max-width: 920px) {
+  .control-sidebar {
+    justify-content: start;
+  }
+}
+
+@media (max-width: 460px) {
+  .control-sidebar {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 10px;
+  }
+}

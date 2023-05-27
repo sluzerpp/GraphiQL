@@ -65,3 +65,13 @@
     overflow-y: auto;
   }
 }
+
+@media (max-width: 920px) {
+  .tabs {
+    min-height: 200px;
+
+    &__tab {
+      font-size: 16px;
+    }
+  }
+}

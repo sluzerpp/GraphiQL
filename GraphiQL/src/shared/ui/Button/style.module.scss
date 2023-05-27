@@ -43,14 +43,22 @@
 	filter: invert(0) !important;
 	height: 18px;
 	width: 18px;
-  }
+}
   
-  @keyframes rotating {
+@keyframes rotating {
 	from {
-	  transform: rotate(0deg);
+		transform: rotate(0deg);
 	}
-  
+
 	to {
-	  transform: rotate(360deg);
+		transform: rotate(360deg);
 	}
-  }
+}
+
+@media (max-width: 920px) {
+	.button {
+		font-size: 14px;
+		min-width: 60px;
+		padding: 6px 8px;
+	}
+}

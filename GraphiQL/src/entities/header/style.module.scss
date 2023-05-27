@@ -39,3 +39,18 @@
 		}
 	}
 }
+
+@media (max-width: 920px) {
+	.header {
+		padding: 10px;
+
+		.icon {
+			width: 30px;
+			height: 30px;
+		}
+
+		.langs {
+			font-size: 20px;
+		}
+	}
+}

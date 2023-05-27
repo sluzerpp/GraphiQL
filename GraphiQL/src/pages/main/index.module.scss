@@ -28,3 +28,13 @@
     overflow-y: initial;
   }
 }
+
+@media (max-width: 460px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .doc {
+    grid-template-columns: 1fr;
+  }
+}
