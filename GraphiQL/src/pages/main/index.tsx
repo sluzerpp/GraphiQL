@@ -1,7 +1,6 @@
 import EditorWidget from 'widgets/EditorWidget';
 import styles from './index.module.scss';
 import useSchema from 'features/useSchema';
-import SubmitButton from 'shared/ui/SubmitButton';
 import GraphQLDocs from 'features/GraphQLDocs';
 import ControlSideBar from 'entities/ControlSideBar';
 import { useState, useEffect } from 'react';
