@@ -23,22 +23,13 @@ function Register() {
     handleSubmit,
     formState: { errors },
     setError,
-    // reset,
   } = useForm<RegisterFormData>();
   const [error, setErrorFirebase] = useState('');
   const [loading, setLoading] = useState(false);
-  // const [valid, setValid] = useState(false);
-  // check if userData is valid
-  // const [user] = useAuthState(auth);
 
   const navigate = useNavigate();
-  console.log(loading);
-  /*useEffect(() => {
-    if (user) navigate('/dashboard');
-  }, [user, navigate]);
-  */
+
   const onSubmit = async (data: RegisterFormData) => {
-    // Validate Fuctions
     const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const validatePassword = (password: string) =>
       /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/.test(password);
@@ -91,27 +82,29 @@ function Register() {
           />
           <div className="error">{errors.password && <div>{errors.password.message}</div>}</div>
           <div className="error">{error && <div>{error}</div>}</div>
-          <Button
-            style="black"
-            disabled={loading}
-            type="submit"
-            onClick={() => {
-              toast.info('Check your Data!');
-            }}
-          >
-            {t('forms.register.button')}
-          </Button>
-          <Button
-            style="blue"
-            onClick={() => {
-              signInWithGoogle();
-              toast.success('Successful!');
-              navigate('/main');
-            }}
-            type="submit"
-          >
-            {t('forms.register.buttonGoogle')}
-          </Button>
+          <div className={classes.register__controls}>
+            <Button
+              style="black"
+              disabled={loading}
+              type="submit"
+              onClick={() => {
+                toast.info('Check your Data!');
+              }}
+            >
+              {t('forms.register.button')}
+            </Button>
+            <Button
+              style="blue"
+              onClick={() => {
+                signInWithGoogle();
+                toast.success('Successful!');
+                navigate('/main');
+              }}
+              type="submit"
+            >
+              {t('forms.register.buttonGoogle')}
+            </Button>
+          </div>
         </form>
         <div>
           {t('forms.register.notes.note1')} <Link to="/auth">{t('forms.register.notes.link')}</Link>{' '}

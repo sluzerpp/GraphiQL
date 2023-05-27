@@ -4,21 +4,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .login__container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: var(--color-white);
-    padding: 30px;
-    position: relative;
-  }
-  .login__textBox {
-    padding: 10px;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
+}
+.login__container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--color-white);
+  padding: 30px;
+  position: relative;
+}
+.login__textBox {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
-  .login div {
-    margin-top: 7px;
-  }
+.login div {
+  margin-top: 7px;
+}
