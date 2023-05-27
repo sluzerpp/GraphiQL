@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import useSchema from 'features/useSchema';
 import GraphQLDocs from 'features/GraphQLDocs';
 import ControlSideBar from 'entities/ControlSideBar';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from 'features/authentication/firebase';
 import { useNavigate } from 'react-router-dom';
@@ -12,14 +12,10 @@ import ControlButton from '@/shared/ui/ControlButton';
 export default function MainPage() {
   const { schema, getSchema, isLoading } = useSchema();
   const [isOpen, setIsOpen] = useState(false);
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (loading) return;
-    if (!user) return navigate('/');
-    if (error) console.log(error);
-  });
+  if (!loading && !user) navigate('/');
 
   return (
     <div className={styles.main}>

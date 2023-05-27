@@ -4,7 +4,8 @@
 			"in": "Sign In",
 			"up": "Sign Up",
 			"out": "Sign Out",
-			"main": "Go to Main"
+			"main": "Go to Main",
+			"welcome": "Go to Welcome"
 
 		},
 		"lang": {

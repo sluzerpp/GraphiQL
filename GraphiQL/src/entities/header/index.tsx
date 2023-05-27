@@ -3,7 +3,7 @@ import classes from './style.module.scss';
 import icon from 'assets/svg/logo.svg';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18n';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { logout } from '@/features/authentication/firebase';
 // import { useHandler } from 'features/authentication/handler';
@@ -15,8 +15,8 @@ import { auth } from 'features/authentication/firebase';
 export default function Header({}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [activeLang, setActiveLang] = useState(i18n.language);
-  //const handleInClick = useHandler();
   const [user] = useAuthState(auth);
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -65,9 +65,16 @@ export default function Header({}) {
         <AuthContext.Provider value={{ currentUser: user }}>
           {user ? (
             <>
-              <Button type="submit" onClick={() => navigate('/main')}>
-                {t('header.buttons.main')}
-              </Button>
+              {location.pathname === '/main' ? (
+                <Button type="submit" onClick={() => navigate('/')}>
+                  {t('header.buttons.welcome')}
+                </Button>
+              ) : (
+                <Button type="submit" onClick={() => navigate('/main')}>
+                  {t('header.buttons.main')}
+                </Button>
+              )}
+
               <Button type="submit" onClick={logout}>
                 {t('header.buttons.out')}
               </Button>

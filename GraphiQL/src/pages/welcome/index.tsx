@@ -1,31 +1,10 @@
-import { useEffect } from 'react';
-// import { lazy } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { auth } from '../../features/authentication/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { onAuthStateChanged } from 'firebase/auth';
-import Creator from 'entities/creator';
 import classes from './style.module.scss';
 import Section from 'entities/section';
 import { useTranslation } from 'react-i18next';
 import { CreatorType, SectionType } from 'type';
+import Creator from '@/entities/creator';
 export default function Welcome() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const [user] = useAuthState(auth);
-  console.log(user);
-  useEffect(() => {
-    // токен авторизации
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        console.log('We have User Now', uid);
-      } else {
-        // User is signed out
-        navigate('/auth');
-      }
-    });
-  }, [navigate]);
 
   return (
     <div className={`${classes.page} page-content`}>
