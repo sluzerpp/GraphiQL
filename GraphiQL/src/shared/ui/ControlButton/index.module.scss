@@ -1,0 +1,26 @@
+.submitBtn {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  text-align: center;
+  appearance: none;
+  border: none;
+  transition: background 0.05s ease-in-out;
+
+  svg {
+    stroke: white;
+  }
+
+  &:hover {
+    background-color: lighten($color: #282c34, $amount: 10);
+  }
+
+  &:active {
+    background-color: darken($color: #282c34, $amount: 5)
+  }
+}
