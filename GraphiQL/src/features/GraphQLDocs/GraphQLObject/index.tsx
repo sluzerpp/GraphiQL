@@ -20,7 +20,7 @@ export default function GraphQLObject({
   setHistoryItem,
 }: GraphQLObjectProps) {
   const { t } = useTranslation();
-  if (object instanceof (GraphQLObjectType || GraphQLInputObjectType)) {
+  if (object instanceof GraphQLObjectType || object instanceof GraphQLInputObjectType) {
     if (isRoot) {
       return <RootElem object={object} setHistoryItem={setHistoryItem} name={name} />;
     }

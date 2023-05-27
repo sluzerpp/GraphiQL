@@ -10,7 +10,7 @@ type RootElemProps = {
 export default function RootElem({ object, setHistoryItem, name }: RootElemProps) {
   return (
     <div className="graphql-type">
-      <div className="graphql-type__name">{name || 'Неизвестно'}</div>
+      <div className="graphql-type__name">{name || 'Неизвестно'}:</div>
       <button onClick={() => setHistoryItem(object)}>{object.name}</button>
     </div>
   );
