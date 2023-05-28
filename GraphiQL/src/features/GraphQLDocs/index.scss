@@ -1,0 +1,73 @@
+.docs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #282c34;
+  width: 350px;
+  max-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  transition: none;
+
+  &.open {
+    padding: 20px;
+    max-width: 100vw;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__prev {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    text-align-last: left;
+    padding: 5px 0;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 1240px) {
+  .docs {
+    position: absolute;
+    z-index: 20;
+    height: 100%;
+    left: 100%;
+
+    &.open {
+      border: 2px solid lighten($color: #282c34, $amount: 10);
+      border-radius: 0 10px 10px 0;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .docs {
+    max-width: initial;
+    left: initial;
+    top: calc(100% + 5px);
+    max-height: 0;
+    overflow-y: hidden;
+    width: 100%;
+    padding: 0;
+
+    &.open {
+      border-radius: 10px;
+      padding: 20px;
+      max-width: initial;
+      min-height: 80vh;
+      max-height: 100vh;
+    }
+  }
+}

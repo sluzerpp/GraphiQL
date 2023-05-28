@@ -1,0 +1,69 @@
+.graphql-type {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  &__container {
+    display: grid;
+    gap: 20px;
+    overflow-y: auto;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &__args {
+    display: inline-flex;
+    gap: 5px;
+  }
+
+  &__name {
+    display: inline;
+    width: min-content;
+    font-weight: bold;
+  }
+
+  &__title {
+    font-size: 18px;
+    text-transform: capitalize;
+    color: darken($color: white, $amount: 20);
+  }
+
+  &__arg {
+    display: flex;
+    gap: 3px;
+    
+    button {
+      background: none;
+      border: none;
+      color: orange;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__description {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  & > button {
+    display: inline;
+    background: none;
+    border: none;
+    width: min-content;
+    color: orange;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

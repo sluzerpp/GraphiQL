@@ -1,0 +1,26 @@
+.submitBtn {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(10, 197, 10);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  text-align: center;
+  appearance: none;
+  border: none;
+  transition: background 0.05s ease-in-out;
+
+  svg {
+    fill: white;
+  }
+
+  &:hover {
+    background-color: rgb(19, 212, 19);
+  }
+
+  &:active {
+    background-color: rgb(8, 167, 8);
+  }
+}

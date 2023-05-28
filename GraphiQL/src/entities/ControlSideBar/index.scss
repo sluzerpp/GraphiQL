@@ -1,0 +1,29 @@
+.control-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: #282c34;
+  padding: 10px;
+
+  & .group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 920px) {
+  .control-sidebar {
+    justify-content: start;
+  }
+}
+
+@media (max-width: 460px) {
+  .control-sidebar {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 10px;
+  }
+}
