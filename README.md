@@ -1,7 +1,11 @@
-# GraphiQL 🤖🤖🤖
+w# GraphiQL 🤖🤖🤖
 
 [React-rs-2023](https://fanciful-cocada-bcd3b2.netlify.app/) Teamwork project and application where you can find full copy of GraphiQL playground/IDE for graphQL requests Rick and morty heroes and find out more information about it. This project was created as a Team task for the [RS School React course](https://rs.school/react/).
 Task description and details (https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md)
+
+## Deploy
+
+[Go to the GraphiQL Deploy](https://graphiql-sluzerpp.netlify.app)
 
 ## Contributors 
 
