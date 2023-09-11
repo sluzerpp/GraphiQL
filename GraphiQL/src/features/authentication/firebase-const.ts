@@ -1,9 +1,9 @@
 export const firebaseConfig = {
-  apiKey: 'AIzaSyDT2wUeZ9wQwDZU6QRgcXMQtJdxDGXFU7M',
-  authDomain: 'fir-auth-graphiql.firebaseapp.com',
-  projectId: 'fir-auth-graphiql',
-  storageBucket: 'fir-auth-graphiql.appspot.com',
-  messagingSenderId: '36342333047',
-  appId: '1:363423330476:web:017f4d0fb8d849f359ef09',
-  measurementId: 'G-YFMMKC7WH9',
+  apiKey: 'AIzaSyDoTptK5sAm2u5yVr-9kEAwsMXqKdIhtN8',
+  authDomain: 'graphiql-7fbaf.firebaseapp.com',
+  projectId: 'graphiql-7fbaf',
+  storageBucket: 'graphiql-7fbaf.appspot.com',
+  messagingSenderId: '293218607126',
+  appId: '1:293218607126:web:aee5e0ce9feb924ce15537',
+  measurementId: 'G-7M75K3V581',
 };

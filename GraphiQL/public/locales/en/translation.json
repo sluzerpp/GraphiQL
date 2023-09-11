@@ -75,6 +75,10 @@
 	"head": "Headers",
 	"doc": "Docs",
 	"root": "Root Types",
-	"field": "Fields"
+	"field": "Fields",
+	"placeholder": {
+		"view": "Results",
+		"editor": "Query, mutation, subscription"
+	}
 }
 }

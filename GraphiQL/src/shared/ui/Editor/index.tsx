@@ -18,6 +18,7 @@ export default function CodeMirrorEditor({
   className,
   value,
   setValue,
+  placeholder,
   ...props
 }: EditorProps) {
   const exts = [
@@ -46,6 +47,7 @@ export default function CodeMirrorEditor({
       className={`editor ${className ? className : ''}`}
       extensions={exts}
       onChange={changeHandler}
+      placeholder={placeholder}
       {...props}
     />
   );

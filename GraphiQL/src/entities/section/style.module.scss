@@ -2,6 +2,7 @@
 	max-width: 800px;
 	width: 100%;
 	text-align: center;
+	padding: 10px;
 
 	&__title{
 		font-size: 40px;
@@ -17,6 +18,21 @@
 		&_creators{
 			display: flex;
 			justify-content: space-between;
+		}
+	}
+}
+
+@media (max-width: 880px) {
+	.section {
+		padding: 30px;
+
+		&__title {
+			font-size: 36px;
+		}
+
+		&__content {
+			font-size: 20px;
+			line-height: 20px;
 		}
 	}
 }

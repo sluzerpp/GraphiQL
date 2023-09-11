@@ -1,6 +1,6 @@
 .reset {
     height: calc(100vh - 160px);
-    width: 100vw;
+    width: 100vw  ;
     display: flex;
     align-items: center;
     justify-content: center;

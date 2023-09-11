@@ -1,6 +1,7 @@
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import CodeMirrorEditor, { EditorProps } from 'shared/ui/Editor';
 import Spinner from 'shared/ui/Spinner';
 
@@ -11,6 +12,7 @@ interface EditorGraphQLProps extends EditorProps {
 
 function EditorGraphQL({ schema, isLoading, ...props }: EditorGraphQLProps) {
   const ext = [];
+  const { t } = useTranslation();
 
   if (schema) {
     ext.push(...graphql(schema));
@@ -24,6 +26,7 @@ function EditorGraphQL({ schema, isLoading, ...props }: EditorGraphQLProps) {
     CodeMirrorEditor({
       ...props,
       extensions: ext,
+      placeholder: t('main.placeholder.editor').toString(),
     })
   ) : (
     <Spinner />

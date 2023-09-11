@@ -73,6 +73,10 @@
 		"head": "Заголовки",
 		"doc": "Документация",
 		"root": "Корневые типы",
-		"field": "Поля"
+		"field": "Поля",
+		"placeholder": {
+			"view": "Результаты",
+			"editor": "Query, mutation, subscription"
+		}
 	}
 }

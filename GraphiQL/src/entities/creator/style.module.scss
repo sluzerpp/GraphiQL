@@ -1,6 +1,4 @@
 .creator{
-
-	width: 31%;
 	border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 6px;
 	padding: 10px;
@@ -20,10 +18,12 @@
 		font-size: 24px;
 		margin-bottom: 5px;
 		text-align: center;
+		padding-bottom: 5px;
+		border-bottom: 1px solid #ffffff;
 	}
 	
 	&__list{
-		text-align: left;
+		text-align: center;
 	}
 }
 

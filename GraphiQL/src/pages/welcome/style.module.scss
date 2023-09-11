@@ -6,6 +6,15 @@
 }
 
 .creators{
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(200px, 1fr));
+	gap: 20px;
+}
+
+@media (max-width: 690px) {
+	.creators {
+		grid-template-columns: 1fr;
+		max-width: 400px;
+		margin: 0 auto;
+	}
 }
