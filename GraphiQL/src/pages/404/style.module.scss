@@ -1,0 +1,43 @@
+.wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
+	background-color: var(--color-black);
+	position: relative;
+
+
+	&:before{
+		background: url('../assets/img/graph-wash.png') repeat;
+    content: "";
+    display: block;
+		position: absolute;
+		top: 0;
+    left: 0;
+	}
+
+}
+
+.content {
+	display: flex;
+	padding-bottom: 10%;
+	margin-left: 10rem;
+	margin-right: 10rem;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: large;
+	color: white;
+	
+}
+
+.text {
+	padding-bottom: 2rem;
+}
+
+.image {
+	max-width: 25rem;
+	max-height: 25rem;
+}
+
+
