@@ -18,7 +18,9 @@ Task description and details (https://github.com/rolling-scopes-school/tasks/blo
 
 ## Screenshot 
 
-![image](https://private-user-images.githubusercontent.com/61283143/239694159-9b4ccdaa-edee-438a-94df-3f8970ed3f52.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg0NTk0NzM4LCJuYmYiOjE2ODQ1OTQ0MzgsInBhdGgiOiIvNjEyODMxNDMvMjM5Njk0MTU5LTliNGNjZGFhLWVkZWUtNDM4YS05NGRmLTNmODk3MGVkM2Y1Mi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNTIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDUyMFQxNDUzNThaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iZWVlNzEwNTgyNjgwYzY0MDcyNDMxNjRlOTkxZjVlMTlhN2FiMjkyYTVhMzI0YzYwNDBkNzI3YmQ1MDk3ZWMyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.ORXLj2tAAWvhhdsrZt1iSUwHoNJswYTKSBXgXDSo_5M)
+![image](https://github.com/sluzerpp/GraphiQL/assets/75631223/56ad3c4c-7ab2-4ee4-9224-fb8998187287)
+![image](https://github.com/sluzerpp/GraphiQL/assets/75631223/bf8ced9f-f9eb-4dff-9439-1e883c02f6e8)
+
 
 ## Tech stack 
 
